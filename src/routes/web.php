@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\VacancyController;
+use App\Http\Controllers\WorkerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +15,6 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'home']);
+Route::get('/', [HomeController::class, 'home'])->name("home");
+Route::get('/vacancies', [VacancyController::class, 'index'])->name("vacancies");
+Route::get('/workers', [WorkerController::class, 'index'])->name("workers");

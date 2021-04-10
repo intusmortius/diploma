@@ -1,0 +1,91 @@
+// Buttons Starts
+
+
+// .btn {
+//     background: #8C91F4;
+//     color: $white;
+//     max-height: 32px;
+//     padding: 15px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     font-weight: bold;
+// }
+
+.btn {
+    width: 15rem;
+    height: 4rem;
+    border-radius: 1rem;
+    box-shadow: $shadow;
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .3s ease;
+    font-size: 14px;
+
+    &__primary {
+        grid-column: 1 / 2;
+        grid-row: 4 / 5;
+        background: var(--primary);
+        box-shadow: inset .2rem .2rem 1rem var(--primary-light),
+            inset -.2rem -.2rem 1rem var(--primary-dark),
+            $shadow;
+        color: var(--greyLight-1);
+
+        &:hover {
+            color: var(--white);
+        }
+
+        &:active {
+            box-shadow: inset .2rem .2rem 1rem var(--primary-dark),
+                inset -.2rem -.2rem 1rem var(--primary-light);
+        }
+    }
+
+    &__secondary {
+        grid-column: 1 / 2;
+        grid-row: 5 / 6;
+        color: var(--greyDark);
+
+        &:hover {
+            color: var(--primary);
+        }
+
+        &:active {
+            box-shadow: $inner-shadow;
+        }
+    }
+
+    .flare-effect {
+        position: relative;
+        overflow: hidden;
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            opacity: 0;
+            transform: translateX(-100%);
+            background: rgba(255, 255, 255, 0.13);
+            background: linear-gradient(-75deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.15) 20px, rgba(255, 255, 255, 0.2) 25px, rgba(255, 255, 255, 0) 60px, rgba(255, 255, 255, 0) 100%);
+
+            &.no-active-btn,
+            &.no-active {
+                opacity: 0;
+            }
+        }
+
+        &:hover:after {
+            opacity: 1;
+            transform: translateX(0);
+            transition-property: transform, opacity;
+            transition-duration: 1.4s, 0.15s;
+            transition-timing-function: ease;
+        }
+    }
+}

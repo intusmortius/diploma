@@ -11,21 +11,40 @@
     <title>{{ config('app.name', 'Diploma') }}</title>
 
     <!-- Styles -->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
 </head>
 
 <body>
-    <header>
+    <header class="header">
+        <div class="container-fluid">
+            <div class="header-container">
+                <div class="header-nav">
+                    <div class="header-logo">
+                        <a href="{{route("home")}}"><img src="img/header-logo.svg" alt="logo"></a>
+                    </div>
+                    <div class="header-nav-item"><a href="{{route("workers")}}">{{__('Workers')}}</a></div>
+                    <div class="header-nav-item"><a href="{{route("vacancies")}}">{{__('Vacancies')}}</a></div>
+                </div>
+                <div class="header-auth">
+                    <div class="header-auth-item"><a href="#">{{__('Log in')}}</a></div>
+                    <div class="header-auth-item"><a href="#">{{__('Sign in')}}</a></div>
+                </div>
+            </div>
+        </div>
     </header>
 
     <main class="main">
         {{$slot}}
     </main>
-    <footer>
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="footer-container">
+                <div class="footer-copyright">
+                    © {{__('Development of a student of the VT-17 group Krutikov Vlad')}}
+                </div>
+            </div>
+        </div>
     </footer>
     <script src="{{ asset("js/main.js") }}"></script>
 
