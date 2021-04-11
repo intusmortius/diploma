@@ -26,9 +26,10 @@
                     <div class="header-nav-item"><a href="{{route("workers")}}">{{__('Workers')}}</a></div>
                     <div class="header-nav-item"><a href="{{route("vacancies")}}">{{__('Vacancies')}}</a></div>
                 </div>
-                <div class="header-auth">
-                    <div class="header-auth-item"><a href="#">{{__('Log in')}}</a></div>
-                    <div class="header-auth-item"><a href="#">{{__('Sign in')}}</a></div>
+                <div class="header-nav">
+                    <div class="header-nav-item"><a href="/login">{{__('Log in')}}</a></div>
+                    <span class="left-line"></span>
+                    <div class="header-nav-item"><a href="/register">{{__('Sign in')}}</a></div>
                 </div>
             </div>
         </div>

@@ -14,5 +14,10 @@
     "Distant work": "Віддалена робота",
     "Filter": "Фільтр",
     "By skills": "За навичками",
-    "Contact": "Зв'язатися"
+    "Contact": "Зв'язатися",
+    "Registration": "Реєстрація",
+    "Authorization": "Авторизація",
+    "Name": "Ім'я",
+    "Email": "Електронна пошта",
+    "Password":"Пароль"
 }
