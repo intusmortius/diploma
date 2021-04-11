@@ -25,7 +25,7 @@
                             </div>
                         </div>
                         <div class="workers-contact">
-                            <button class="btn btn__primary">{{ __("Contact") }}</button>
+                            <button class="btn flare-effect">{{ __("Contact") }}</button>
                         </div>
                     </div>
                     <div class="workers-block">
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <div class="workers-contact">
-                            <button class="btn btn__primary">{{ __("Contact") }}</button>
+                            <button class="btn flare-effect">{{ __("Contact") }}</button>
                         </div>
                     </div>
                     <div class="workers-block">
@@ -73,7 +73,7 @@
                             </div>
                         </div>
                         <div class="workers-contact">
-                            <button class="btn btn__primary">{{ __("Contact") }}</button>
+                            <button class="btn flare-effect">{{ __("Contact") }}</button>
                         </div>
                     </div>
                     <div class="workers-block">
@@ -97,7 +97,7 @@
                             </div>
                         </div>
                         <div class="workers-contact">
-                            <button class="btn btn__primary">{{ __("Contact") }}</button>
+                            <button class="btn flare-effect">{{ __("Contact") }}</button>
                         </div>
                     </div>
                     <div class="workers-block">
@@ -121,7 +121,7 @@
                             </div>
                         </div>
                         <div class="workers-contact">
-                            <button class="btn btn__primary">{{ __("Contact") }}</button>
+                            <button class="btn flare-effect">{{ __("Contact") }}</button>
                         </div>
                     </div>
                     <div class="workers-block">
@@ -145,7 +145,7 @@
                             </div>
                         </div>
                         <div class="workers-contact">
-                            <button class="btn btn__primary">{{ __("Contact") }}</button>
+                            <button class="btn flare-effect">{{ __("Contact") }}</button>
                         </div>
                     </div>
                     <div class="workers-block">
@@ -169,7 +169,7 @@
                             </div>
                         </div>
                         <div class="workers-contact">
-                            <button class="btn btn__primary">{{ __("Contact") }}</button>
+                            <button class="btn flare-effect">{{ __("Contact") }}</button>
                         </div>
                     </div>
                     <div class="workers-block">
@@ -193,7 +193,7 @@
                             </div>
                         </div>
                         <div class="workers-contact">
-                            <button class="btn btn__primary">{{ __("Contact") }}</button>
+                            <button class="btn flare-effect">{{ __("Contact") }}</button>
                         </div>
                     </div>
                     <div class="workers-block">
@@ -217,7 +217,7 @@
                             </div>
                         </div>
                         <div class="workers-contact">
-                            <button class="btn btn__primary">{{ __("Contact") }}</button>
+                            <button class="btn flare-effect">{{ __("Contact") }}</button>
                         </div>
                     </div>
                     <div class="workers-block">
@@ -241,7 +241,7 @@
                             </div>
                         </div>
                         <div class="workers-contact">
-                            <button class="btn btn__primary">{{ __("Contact") }}</button>
+                            <button class="btn flare-effect">{{ __("Contact") }}</button>
                         </div>
                     </div>
                     <div class="workers-block">
@@ -265,7 +265,7 @@
                             </div>
                         </div>
                         <div class="workers-contact">
-                            <button class="btn btn__primary">{{ __("Contact") }}</button>
+                            <button class="btn flare-effect">{{ __("Contact") }}</button>
                         </div>
                     </div>
                 </div>

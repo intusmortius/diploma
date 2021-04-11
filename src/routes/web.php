@@ -18,3 +18,9 @@ use App\Http\Controllers\WorkerController;
 Route::get('/', [HomeController::class, 'home'])->name("home");
 Route::get('/vacancies', [VacancyController::class, 'index'])->name("vacancies");
 Route::get('/workers', [WorkerController::class, 'index'])->name("workers");
+// Route::get('/register', function () {
+//     return view("auth.register");
+// });
+// Route::get('/login', function () {
+//     return view("auth.login");
+// });

@@ -1,20 +1,24 @@
-$main-color: #656BEA;
 $white: #ffffff;
 $black: #000000;
 
-:root {
-    --primary-light: #8abdff;
-    --primary: #656BEA;
-    --primary-dark: #5b0eeb;
+$primary-light: #8abdff;
+$primary: #656BEA;
+$primary-dark: #5b0eeb;
+$secondary: #8A2BE2;
 
-    --white: #FFFFFF;
-    --greyLight-1: #E4EBF5;
-    --greyLight-2: #c8d0e7;
-    --greyLight-3: #bec8e4;
-    --greyDark: #9baacf;
-}
+$gray: #9b9b9b;
+$greyLight-1: #E4EBF5;
+$greyLight-2: #c8d0e7;
+$greyLight-3: #bec8e4;
+$greyDark: #9baacf;
 
-$shadow: .3rem .3rem .6rem var(--greyLight-2),
--.2rem -.2rem .5rem var(--white);
-$inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
-inset -.2rem -.2rem .5rem var(--white);
+$input-color: $primary;
+$input-color-secondary: $secondary;
+
+
+$shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+
+
+$inner-shadow: inset .2rem .2rem .5rem $greyLight-2,
+inset -.2rem -.2rem .5rem $white;

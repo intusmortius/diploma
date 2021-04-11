@@ -9,7 +9,7 @@
                     <div class="main-banner-description">
                         <h2 class="banner-header">{{ __("Mutual assistance site") }}</h2>
                         <p class="banner-subtitle">{{__("Here you can find those who implement your ideas")}}</p>
-                        <button class="btn btn__primary flare-effect">{{__("Find a performer")}}</button>
+                        <button class="btn flare-effect">{{__("Find a performer")}}</button>
                     </div>
                     <div class="banner-logo">
                         <img src="/img/handshaking-logo.svg" alt="handshaking">
@@ -20,7 +20,7 @@
                         <p class="banner-subtitle">
                             {{ __("Sign up as a freelancer and start looking for a job right now") }}
                         </p>
-                        <button class="btn btn__primary flare-effect">{{ __("Become a performer") }}</button>
+                        <button class="btn flare-effect">{{ __("Become a performer") }}</button>
                     </div>
                     <div class="banner-logo">
                         <img src="/img/dollar-logo.svg" alt="handshaking">
