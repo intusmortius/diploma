@@ -554,6 +554,252 @@ button.swiper-pagination-bullet {
           backface-visibility: hidden;
 }
 
+@charset "UTF-8";
+.form-group {
+  position: relative;
+}
+
+.form-field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #000000;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+.form-field::-moz-placeholder {
+  color: transparent;
+}
+.form-field:-ms-input-placeholder {
+  color: transparent;
+}
+.form-field::placeholder {
+  color: transparent;
+}
+.form-field:-moz-placeholder-shown ~ .form-label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+.form-field:-ms-input-placeholder ~ .form-label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+.form-field:placeholder-shown ~ .form-label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+
+.form-label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #9b9b9b;
+}
+
+.form-field:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  -o-border-image: linear-gradient(to right, #656BEA, #8A2BE2);
+     border-image: linear-gradient(to right, #656BEA, #8A2BE2);
+  border-image-slice: 1;
+}
+.form-field:focus ~ .form-label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #656BEA;
+  font-weight: 700;
+}
+
+/* reset input */
+.form-field:required, .form-field:invalid {
+  box-shadow: none;
+}
+
+.form-submit {
+  display: flex;
+  justify-content: center;
+}
+.form-submit button {
+  width: 100%;
+}
+
+.rule {
+  margin: 10px 0;
+  border: none;
+  height: 1.5px;
+  background-image: linear-gradient(left, #f0f0f0, #c9bbae, #f0f0f0);
+}
+
+/* ===== Select Box ===== */
+.sel {
+  font-size: 1.3rem;
+  display: inline-block;
+  width: 350px;
+  padding: 10px 0;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
+}
+
+.sel::before {
+  position: absolute;
+  content: "";
+  padding: 10px 0;
+  font-family: "FontAwesome";
+  color: #FFF;
+  right: 20px;
+  top: calc(50% - 0.5em);
+}
+
+.sel.active::before {
+  transform: rotateX(-180deg);
+}
+
+.sel__placeholder {
+  display: block;
+  color: #838e95;
+  text-align: left;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  visibility: visible;
+}
+
+.sel.active .sel__placeholder {
+  visibility: hidden;
+}
+
+.sel__placeholder::before {
+  position: absolute;
+  top: 10px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: attr(data-placeholder);
+  visibility: hidden;
+}
+
+.sel.active .sel__placeholder::before {
+  visibility: visible;
+}
+
+.sel__box {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: -4px;
+  display: none;
+  list-style-type: none;
+  text-align: left;
+  background-color: #FFF;
+  width: calc(100% + 8px);
+  box-sizing: border-box;
+}
+
+.sel.active .sel__box {
+  display: block;
+  -webkit-animation: fadeInUp 500ms;
+          animation: fadeInUp 500ms;
+}
+
+.sel__box__options {
+  display: list-item;
+  color: #838e95;
+  padding: 0.5em 0.5em;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.sel__box__options::after {
+  content: "";
+  font-family: "FontAwesome";
+  margin-left: 5px;
+  display: none;
+}
+
+.sel__box__options.selected::after {
+  display: inline;
+}
+
+.sel__box__options:hover {
+  background-color: #ebedef;
+}
+
+/* ----- Select Box Black Panther ----- */
+.sel {
+  border-bottom: 2px solid #9b9b9b;
+}
+
+.sel.active {
+  border-width: 3px;
+  -o-border-image: linear-gradient(to right, #656BEA, #8A2BE2);
+     border-image: linear-gradient(to right, #656BEA, #8A2BE2);
+  border-image-slice: 1;
+}
+
+.sel--black-panther {
+  z-index: 3;
+}
+
+/* ----- Select Box Superman ----- */
+.sel--superman {
+  /*   display: none; */
+  z-index: 2;
+}
+
+/* ===== Keyframes ===== */
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 .btn {
   font-family: "Nunito", sans-serif;
   background: #656BEA;
@@ -684,88 +930,12 @@ button.swiper-pagination-bullet {
   width: 40%;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
-
-.form-group {
-  position: relative;
+.auth-form .form-group {
   padding: 15px 0 0;
-  margin-top: 10px;
   margin-bottom: 20px;
 }
-
-.form-field {
-  font-family: inherit;
-  width: 100%;
-  border: 0;
-  border-bottom: 2px solid #9b9b9b;
-  outline: 0;
-  font-size: 1.3rem;
-  color: #000000;
-  padding: 7px 0;
-  background: transparent;
-  transition: border-color 0.2s;
-}
-.form-field::-moz-placeholder {
-  color: transparent;
-}
-.form-field:-ms-input-placeholder {
-  color: transparent;
-}
-.form-field::placeholder {
-  color: transparent;
-}
-.form-field:-moz-placeholder-shown ~ .form-label {
-  font-size: 1.3rem;
-  cursor: text;
-  top: 20px;
-}
-.form-field:-ms-input-placeholder ~ .form-label {
-  font-size: 1.3rem;
-  cursor: text;
-  top: 20px;
-}
-.form-field:placeholder-shown ~ .form-label {
-  font-size: 1.3rem;
-  cursor: text;
-  top: 20px;
-}
-
-.form-label {
-  position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 1rem;
-  color: #9b9b9b;
-}
-
-.form-field:focus {
-  padding-bottom: 6px;
-  font-weight: 700;
-  border-width: 3px;
-  -o-border-image: linear-gradient(to right, #656BEA, #8A2BE2);
-     border-image: linear-gradient(to right, #656BEA, #8A2BE2);
-  border-image-slice: 1;
-}
-.form-field:focus ~ .form-label {
-  position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 1rem;
-  color: #656BEA;
-  font-weight: 700;
-}
-
-/* reset input */
-.form-field:required, .form-field:invalid {
-  box-shadow: none;
-}
-
-.form-submit {
-  display: flex;
-  justify-content: center;
-}
-.form-submit button {
+.auth-form .sel {
+  margin-bottom: 20px;
   width: 100%;
 }
 
@@ -845,7 +1015,7 @@ a {
   background-color: #ffffff;
   opacity: 0;
   z-index: 1000;
-  transition: width ease-out 0.4s;
+  transition: width ease-out 0.3s;
 }
 
 .header-nav-item::before {

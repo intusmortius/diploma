@@ -3,7 +3,8 @@
         <div class="container-fluid">
             <h2 class="section-header">{{ __("Registration") }}</h2>
             <div class="section-content">
-                <form class="auth-form" method="POST" action="{{ route('register') }}">
+                <form id="auth_form" class="auth-form" method="POST" action="{{ route('register') }}"
+                    x-data="{role_id: 'worker'}">
                     @csrf
 
                     <div class="form-group field">
@@ -26,6 +27,29 @@
                             name="auth_confirm_password" id='auth_confirm_password' required />
                         <label for="auth_confirm_password" class="form-label">{{ __("Confirm password") }}</label>
                     </div>
+                    <div class="sel sel--black-panther">
+                        <select name="select-role" id="select-role">
+                            <option value="" disabled>Тип</option>
+                            <option value="worker">Виконавець</option>
+                            <option value="customer">Замовник</option>
+                        </select>
+                    </div>
+                    <div class="form-group field" x-show="role_id == 'customer'">
+                        <input type="input" class="form-field" placeholder="{{ __("Place of work") }}"
+                            name="auth_work_place" id='auth_work_place' required />
+                        <label for="auth_work_place" class="form-label">{{ __("Place of work") }}</label>
+                    </div>
+                    <div class="form-group field" x-show="role_id == 'customer'">
+                        <input type="input" class="form-field" placeholder="{{ __("Company") }}"
+                            name="auth_company_place" id='auth_company_place' required />
+                        <label for="auth_company_place" class="form-label">{{ __("Company") }}</label>
+                    </div>
+                    <div class="form-group field" x-show="role_id == 'worker'">
+                        <input type="input" class="form-field" placeholder="{{ __("Specialization") }}"
+                            name="auth_specialization" id='auth_specialization' required />
+                        <label for="auth_specialization" class="form-label">{{ __("Specialization") }}</label>
+                    </div>
+
                     <div class="form-submit"><button class="btn flare-effect">{{ __("Sign in") }}</button></div>
                 </form>
             </div>
