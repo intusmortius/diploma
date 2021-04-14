@@ -19,5 +19,10 @@
     "Authorization": "Авторизація",
     "Name": "Ім'я",
     "Email": "Електронна пошта",
-    "Password":"Пароль"
+    "Password":"Пароль",
+    "Worker":"Виконавець",
+    "Customer":"Виконавець",
+    "Place of work":"Місце роботи",
+    "Company":"Компанія",
+    "Specialization":"Спеціалізація"
 }

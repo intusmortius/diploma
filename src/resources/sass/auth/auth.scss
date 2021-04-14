@@ -3,79 +3,14 @@
     padding: 20px 20px;
     width: 40%;
     box-shadow: $shadow;
-}
 
-.form-group {
-    position: relative;
-    padding: 15px 0 0;
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
-
-.form-field {
-    font-family: inherit;
-    width: 100%;
-    border: 0;
-    border-bottom: 2px solid $gray;
-    outline: 0;
-    font-size: 1.3rem;
-    color: $black;
-    padding: 7px 0;
-    background: transparent;
-    transition: border-color 0.2s;
-
-    &::placeholder {
-        color: transparent;
+    .form-group {
+        padding: 15px 0 0;
+        margin-bottom: 20px;
     }
 
-    &:placeholder-shown~.form-label {
-        font-size: 1.3rem;
-        cursor: text;
-        top: 20px;
-    }
-}
-
-.form-label {
-    position: absolute;
-    top: 0;
-    display: block;
-    transition: 0.2s;
-    font-size: 1rem;
-    color: $gray;
-}
-
-.form-field:focus {
-    ~.form-label {
-        position: absolute;
-        top: 0;
-        display: block;
-        transition: 0.2s;
-        font-size: 1rem;
-        color: $input-color;
-        font-weight: 700;
-    }
-
-    padding-bottom: 6px;
-    font-weight: 700;
-    border-width: 3px;
-    border-image: linear-gradient(to right, $input-color, $input-color-secondary);
-    border-image-slice: 1;
-}
-
-/* reset input */
-.form-field {
-
-    &:required,
-    &:invalid {
-        box-shadow: none;
-    }
-}
-
-.form-submit {
-    display: flex;
-    justify-content: center;
-
-    button {
+    .sel {
+        margin-bottom: 20px;
         width: 100%;
     }
 }
