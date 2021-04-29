@@ -24,5 +24,20 @@
     "Customer":"Виконавець",
     "Place of work":"Місце роботи",
     "Company":"Компанія",
-    "Specialization":"Спеціалізація"
+    "Specialization":"Спеціалізація",
+    "Logout":"Вихiд",
+    "Profile":"Профiль",
+    "Edit profile":"Редагування профiлю",
+    "Group":"Група",
+    "Cathedra":"Кафедра",
+    "Faculty":"Факультет",
+    "About":"Про себе",
+    "Skills":"Навички",
+    "Edit":"Редагувати",
+    "New Vacancy":"Нова вакансiя",
+    "Vacancy name":"Назва вакансії",
+    "Description":"Опис",
+    "About worker":"Про працівника",
+    "Responsibilities":"Обов'язки",
+    "Requirements":"Вимоги"
 }

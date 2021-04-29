@@ -46,6 +46,11 @@ a {
     color: $white;
 }
 
+a:hover {
+    text-decoration: none;
+    color: $white;
+}
+
 
 .container-fluid {
     max-width: 1125px;
@@ -54,7 +59,7 @@ a {
 }
 
 .section {
-    padding-top: 80px;
+    padding-top: 45px;
 }
 
 
@@ -70,6 +75,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    min-height: 95px;
 }
 
 .header-nav {

@@ -4,270 +4,40 @@
             <h2 class="section-header">{{ __("Workers") }}</h2>
             <div class="section-content">
                 <div class="workers-block-container">
+
+                    @foreach ($users as $user)
                     <div class="workers-block">
                         <div class="workers-block-left">
-                            <div class="workers-avatar">
-                                <img src="/img/avatar-default.svg" alt="avatar-default">
-                            </div>
+                            <a href="{{route("profile", $user)}}">
+                                <div class="workers-avatar">
+                                    <img src="/img/avatar-default.svg" alt="avatar-default">
+                                </div>
+                            </a>
                             <div class="workers-info">
                                 <div class="workers-name">
-                                    Николай Меньщиков
+                                    {{$user->name}}
                                 </div>
                                 <div class="workers-specialization">
-                                    Дизайн, верстка
+                                    {{$user->worker_specialization}}
                                 </div>
+                                @if ($user->worker_exp)
                                 <div class="workers-exp">
                                     <div class="exp-logo-container">
                                         <img src="/img/calendar.svg" alt="calendar">
                                     </div>
-                                    <span class="workers-exp-label">Опыт работы 2 года</span>
+                                    <span class="workers-exp-label">{{$user->worker_exp}}</span>
                                 </div>
+                                @endif
+
                             </div>
                         </div>
+                        @can('contact_with_worker')
                         <div class="workers-contact">
-                            <button class="btn flare-effect">{{ __("Contact") }}</button>
+                            <button id="{{$user->id}}" class="btn flare-effect">{{ __("Contact") }}</button>
                         </div>
+                        @endcan
                     </div>
-                    <div class="workers-block">
-                        <div class="workers-block-left">
-                            <div class="workers-avatar">
-                                <img src="/img/avatar-default.svg" alt="avatar-default">
-                            </div>
-                            <div class="workers-info">
-                                <div class="workers-name">
-                                    Николай Меньщиков
-                                </div>
-                                <div class="workers-specialization">
-                                    Дизайн, верстка
-                                </div>
-                                <div class="workers-exp">
-                                    <div class="exp-logo-container">
-                                        <img src="/img/calendar.svg" alt="calendar">
-                                    </div>
-                                    <span class="workers-exp-label">Опыт работы 2 года</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="workers-contact">
-                            <button class="btn flare-effect">{{ __("Contact") }}</button>
-                        </div>
-                    </div>
-                    <div class="workers-block">
-                        <div class="workers-block-left">
-                            <div class="workers-avatar">
-                                <img src="/img/avatar-default.svg" alt="avatar-default">
-                            </div>
-                            <div class="workers-info">
-                                <div class="workers-name">
-                                    Николай Меньщиков
-                                </div>
-                                <div class="workers-specialization">
-                                    Дизайн, верстка
-                                </div>
-                                <div class="workers-exp">
-                                    <div class="exp-logo-container">
-                                        <img src="/img/calendar.svg" alt="calendar">
-                                    </div>
-                                    <span class="workers-exp-label">Опыт работы 2 года</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="workers-contact">
-                            <button class="btn flare-effect">{{ __("Contact") }}</button>
-                        </div>
-                    </div>
-                    <div class="workers-block">
-                        <div class="workers-block-left">
-                            <div class="workers-avatar">
-                                <img src="/img/avatar-default.svg" alt="avatar-default">
-                            </div>
-                            <div class="workers-info">
-                                <div class="workers-name">
-                                    Николай Меньщиков
-                                </div>
-                                <div class="workers-specialization">
-                                    Дизайн, верстка
-                                </div>
-                                <div class="workers-exp">
-                                    <div class="exp-logo-container">
-                                        <img src="/img/calendar.svg" alt="calendar">
-                                    </div>
-                                    <span class="workers-exp-label">Опыт работы 2 года</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="workers-contact">
-                            <button class="btn flare-effect">{{ __("Contact") }}</button>
-                        </div>
-                    </div>
-                    <div class="workers-block">
-                        <div class="workers-block-left">
-                            <div class="workers-avatar">
-                                <img src="/img/avatar-default.svg" alt="avatar-default">
-                            </div>
-                            <div class="workers-info">
-                                <div class="workers-name">
-                                    Николай Меньщиков
-                                </div>
-                                <div class="workers-specialization">
-                                    Дизайн, верстка
-                                </div>
-                                <div class="workers-exp">
-                                    <div class="exp-logo-container">
-                                        <img src="/img/calendar.svg" alt="calendar">
-                                    </div>
-                                    <span class="workers-exp-label">Опыт работы 2 года</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="workers-contact">
-                            <button class="btn flare-effect">{{ __("Contact") }}</button>
-                        </div>
-                    </div>
-                    <div class="workers-block">
-                        <div class="workers-block-left">
-                            <div class="workers-avatar">
-                                <img src="/img/avatar-default.svg" alt="avatar-default">
-                            </div>
-                            <div class="workers-info">
-                                <div class="workers-name">
-                                    Николай Меньщиков
-                                </div>
-                                <div class="workers-specialization">
-                                    Дизайн, верстка
-                                </div>
-                                <div class="workers-exp">
-                                    <div class="exp-logo-container">
-                                        <img src="/img/calendar.svg" alt="calendar">
-                                    </div>
-                                    <span class="workers-exp-label">Опыт работы 2 года</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="workers-contact">
-                            <button class="btn flare-effect">{{ __("Contact") }}</button>
-                        </div>
-                    </div>
-                    <div class="workers-block">
-                        <div class="workers-block-left">
-                            <div class="workers-avatar">
-                                <img src="/img/avatar-default.svg" alt="avatar-default">
-                            </div>
-                            <div class="workers-info">
-                                <div class="workers-name">
-                                    Николай Меньщиков
-                                </div>
-                                <div class="workers-specialization">
-                                    Дизайн, верстка
-                                </div>
-                                <div class="workers-exp">
-                                    <div class="exp-logo-container">
-                                        <img src="/img/calendar.svg" alt="calendar">
-                                    </div>
-                                    <span class="workers-exp-label">Опыт работы 2 года</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="workers-contact">
-                            <button class="btn flare-effect">{{ __("Contact") }}</button>
-                        </div>
-                    </div>
-                    <div class="workers-block">
-                        <div class="workers-block-left">
-                            <div class="workers-avatar">
-                                <img src="/img/avatar-default.svg" alt="avatar-default">
-                            </div>
-                            <div class="workers-info">
-                                <div class="workers-name">
-                                    Николай Меньщиков
-                                </div>
-                                <div class="workers-specialization">
-                                    Дизайн, верстка
-                                </div>
-                                <div class="workers-exp">
-                                    <div class="exp-logo-container">
-                                        <img src="/img/calendar.svg" alt="calendar">
-                                    </div>
-                                    <span class="workers-exp-label">Опыт работы 2 года</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="workers-contact">
-                            <button class="btn flare-effect">{{ __("Contact") }}</button>
-                        </div>
-                    </div>
-                    <div class="workers-block">
-                        <div class="workers-block-left">
-                            <div class="workers-avatar">
-                                <img src="/img/avatar-default.svg" alt="avatar-default">
-                            </div>
-                            <div class="workers-info">
-                                <div class="workers-name">
-                                    Николай Меньщиков
-                                </div>
-                                <div class="workers-specialization">
-                                    Дизайн, верстка
-                                </div>
-                                <div class="workers-exp">
-                                    <div class="exp-logo-container">
-                                        <img src="/img/calendar.svg" alt="calendar">
-                                    </div>
-                                    <span class="workers-exp-label">Опыт работы 2 года</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="workers-contact">
-                            <button class="btn flare-effect">{{ __("Contact") }}</button>
-                        </div>
-                    </div>
-                    <div class="workers-block">
-                        <div class="workers-block-left">
-                            <div class="workers-avatar">
-                                <img src="/img/avatar-default.svg" alt="avatar-default">
-                            </div>
-                            <div class="workers-info">
-                                <div class="workers-name">
-                                    Николай Меньщиков
-                                </div>
-                                <div class="workers-specialization">
-                                    Дизайн, верстка
-                                </div>
-                                <div class="workers-exp">
-                                    <div class="exp-logo-container">
-                                        <img src="/img/calendar.svg" alt="calendar">
-                                    </div>
-                                    <span class="workers-exp-label">Опыт работы 2 года</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="workers-contact">
-                            <button class="btn flare-effect">{{ __("Contact") }}</button>
-                        </div>
-                    </div>
-                    <div class="workers-block">
-                        <div class="workers-block-left">
-                            <div class="workers-avatar">
-                                <img src="/img/avatar-default.svg" alt="avatar-default">
-                            </div>
-                            <div class="workers-info">
-                                <div class="workers-name">
-                                    Николай Меньщиков
-                                </div>
-                                <div class="workers-specialization">
-                                    Дизайн, верстка
-                                </div>
-                                <div class="workers-exp">
-                                    <div class="exp-logo-container">
-                                        <img src="/img/calendar.svg" alt="calendar">
-                                    </div>
-                                    <span class="workers-exp-label">Опыт работы 2 года</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="workers-contact">
-                            <button class="btn flare-effect">{{ __("Contact") }}</button>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="filters">
                     <h4 class="filters-header">{{ __("Filter") }}</h4>

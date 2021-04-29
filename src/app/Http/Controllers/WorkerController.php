@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+use Spatie\Permission\Models\Role;
 
 class WorkerController extends Controller
 {
@@ -14,7 +19,12 @@ class WorkerController extends Controller
      */
     public function index()
     {
-        return view("workers.workers");
+        $all_users = User::with('roles')->get();
+        $users = $all_users->filter(function ($user) {
+            return $user->hasRole('worker');
+        });
+        // $pagination_users = $this->paginate($users, 5);
+        return view("workers.workers", ['users' => $users]);
     }
 
     /**
@@ -46,7 +56,7 @@ class WorkerController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view("users.profile", ['user' => $user]);
     }
 
     /**
@@ -57,7 +67,7 @@ class WorkerController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return $user->can("update", $user) ? view("users.profile-edit", ["user" => $user]) : abort(403);
     }
 
     /**
@@ -67,9 +77,11 @@ class WorkerController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        //
+        $attributes = $request->validated();
+        $user->update($attributes);
+        return redirect(route("profile", $user));
     }
 
     /**
@@ -81,5 +93,14 @@ class WorkerController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function paginate($items, $perPage = 15, $page = null, $options = [])
+    {
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 }
