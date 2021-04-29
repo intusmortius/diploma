@@ -11,7 +11,11 @@
     <title>{{ config('app.name', 'Diploma') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+
+    {{-- Bootstap --}}
+    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
+    <link href="{{ asset('/css/main.css') }}" rel="stylesheet">
 
 </head>
 
@@ -21,15 +25,27 @@
             <div class="header-container">
                 <div class="header-nav">
                     <div class="header-logo">
-                        <a href="{{route("home")}}"><img src="img/header-logo.svg" alt="logo"></a>
+                        <a href="{{route("home")}}"><img src="/img/header-logo.svg" alt="logo"></a>
                     </div>
                     <div class="header-nav-item"><a href="{{route("workers")}}">{{__('Workers')}}</a></div>
                     <div class="header-nav-item"><a href="{{route("vacancies")}}">{{__('Vacancies')}}</a></div>
+                    <div class="header-nav-item"><a href="{{route("new-vacancy")}}">{{__('New Vacancy')}}</a></div>
                 </div>
                 <div class="header-nav">
+                    @guest
                     <div class="header-nav-item"><a href="/login">{{__('Log in')}}</a></div>
                     <span class="left-line"></span>
                     <div class="header-nav-item"><a href="/register">{{__('Sign in')}}</a></div>
+                    @endguest
+                    @auth
+                    <div class="header-nav-item"><a href="{{route("profile", auth()->user())}}">{{__('Profile')}}</a>
+                    </div>
+                    <span class="left-line"></span>
+                    <form action="{{route("logout")}}" method="POST">
+                        @csrf
+                        <button type="submit" class="header-nav-item btn-transparent">{{__('Logout')}}</button>
+                    </form>
+                    @endauth
                 </div>
             </div>
         </div>

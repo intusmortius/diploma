@@ -17,7 +17,11 @@ use App\Http\Controllers\WorkerController;
 
 Route::get('/', [HomeController::class, 'home'])->name("home");
 Route::get('/vacancies', [VacancyController::class, 'index'])->name("vacancies");
+Route::get('/vacancies/create', [VacancyController::class, 'create'])->name('new-vacancy');
 Route::get('/workers', [WorkerController::class, 'index'])->name("workers");
+Route::get('/workers/{user}', [WorkerController::class, 'show'])->name('profile');
+Route::get('/workers/{user}/edit', [WorkerController::class, 'edit'])->name('workers-edit');
+Route::post('/workers/{user}', [WorkerController::class, 'update'])->name('workers-update');
 // Route::get('/register', function () {
 //     return view("auth.register");
 // });

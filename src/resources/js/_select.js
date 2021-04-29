@@ -40,9 +40,9 @@ $('.sel').each(function() {
     $(this).addClass('selected');
     
     if(index == 0) {
-      $('#auth_form').attr("x-data","{role_id: 'worker'}");
+      $('#auth_form').attr("x-data","{role_id: 1}");
     } else if (index == 1)  {
-      $('#auth_form').attr("x-data","{role_id: 'customer'}");
+      $('#auth_form').attr("x-data","{role_id: 2}");
     }
     
     var $currentSel = $(this).closest('.sel');

@@ -42,177 +42,29 @@
                         {{ __("The best workers") }}
                     </div>
                     <div class="workers-container">
+                        @foreach ($users as $user)
                         <div class="workers-block">
                             <div class="workers-avatar">
                                 <img src="/img/avatar-default.svg" alt="avatar-default">
                             </div>
                             <div class="workers-info">
                                 <div class="workers-name">
-                                    Николай Меньщиков
+                                    {{ $user->name }}
                                 </div>
                                 <div class="workers-specialization">
-                                    Дизайн, верстка
+                                    {{$user->worker_specialization}}
                                 </div>
+                                @if ($user->worker_exp)
                                 <div class="workers-exp">
                                     <div class="exp-logo-container">
                                         <img src="/img/calendar.svg" alt="calendar">
                                     </div>
                                     <span class="workers-exp-label">Опыт работы 2 года</span>
                                 </div>
+                                @endif
                             </div>
                         </div>
-                        <div class="workers-block">
-                            <div class="workers-avatar">
-                                <img src="/img/avatar-default.svg" alt="avatar-default">
-                            </div>
-                            <div class="workers-info">
-                                <div class="workers-name">
-                                    Николай Меньщиков
-                                </div>
-                                <div class="workers-specialization">
-                                    Дизайн, верстка
-                                </div>
-                                <div class="workers-exp">
-                                    <div class="exp-logo-container">
-                                        <img src="/img/calendar.svg" alt="calendar">
-                                    </div>
-                                    <span class="workers-exp-label">Опыт работы 2 года</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="workers-block">
-                            <div class="workers-avatar">
-                                <img src="/img/avatar-default.svg" alt="avatar-default">
-                            </div>
-                            <div class="workers-info">
-                                <div class="workers-name">
-                                    Николай Меньщиков
-                                </div>
-                                <div class="workers-specialization">
-                                    Дизайн, верстка
-                                </div>
-                                <div class="workers-exp">
-                                    <div class="exp-logo-container">
-                                        <img src="/img/calendar.svg" alt="calendar">
-                                    </div>
-                                    <span class="workers-exp-label">Опыт работы 2 года</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="workers-block">
-                            <div class="workers-avatar">
-                                <img src="/img/avatar-default.svg" alt="avatar-default">
-                            </div>
-                            <div class="workers-info">
-                                <div class="workers-name">
-                                    Николай Меньщиков
-                                </div>
-                                <div class="workers-specialization">
-                                    Дизайн, верстка
-                                </div>
-                                <div class="workers-exp">
-                                    <div class="exp-logo-container">
-                                        <img src="/img/calendar.svg" alt="calendar">
-                                    </div>
-                                    <span class="workers-exp-label">Опыт работы 2 года</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="workers-block">
-                            <div class="workers-avatar">
-                                <img src="/img/avatar-default.svg" alt="avatar-default">
-                            </div>
-                            <div class="workers-info">
-                                <div class="workers-name">
-                                    Николай Меньщиков
-                                </div>
-                                <div class="workers-specialization">
-                                    Дизайн, верстка
-                                </div>
-                                <div class="workers-exp">
-                                    <div class="exp-logo-container">
-                                        <img src="/img/calendar.svg" alt="calendar">
-                                    </div>
-                                    <span class="workers-exp-label">Опыт работы 2 года</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="workers-block">
-                            <div class="workers-avatar">
-                                <img src="/img/avatar-default.svg" alt="avatar-default">
-                            </div>
-                            <div class="workers-info">
-                                <div class="workers-name">
-                                    Николай Меньщиков
-                                </div>
-                                <div class="workers-specialization">
-                                    Дизайн, верстка
-                                </div>
-                                <div class="workers-exp">
-                                    <div class="exp-logo-container">
-                                        <img src="/img/calendar.svg" alt="calendar">
-                                    </div>
-                                    <span class="workers-exp-label">Опыт работы 2 года</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="workers-block">
-                            <div class="workers-avatar">
-                                <img src="/img/avatar-default.svg" alt="avatar-default">
-                            </div>
-                            <div class="workers-info">
-                                <div class="workers-name">
-                                    Николай Меньщиков
-                                </div>
-                                <div class="workers-specialization">
-                                    Дизайн, верстка
-                                </div>
-                                <div class="workers-exp">
-                                    <div class="exp-logo-container">
-                                        <img src="/img/calendar.svg" alt="calendar">
-                                    </div>
-                                    <span class="workers-exp-label">Опыт работы 2 года</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="workers-block">
-                            <div class="workers-avatar">
-                                <img src="/img/avatar-default.svg" alt="avatar-default">
-                            </div>
-                            <div class="workers-info">
-                                <div class="workers-name">
-                                    Николай Меньщиков
-                                </div>
-                                <div class="workers-specialization">
-                                    Дизайн, верстка
-                                </div>
-                                <div class="workers-exp">
-                                    <div class="exp-logo-container">
-                                        <img src="/img/calendar.svg" alt="calendar">
-                                    </div>
-                                    <span class="workers-exp-label">Опыт работы 2 года</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="workers-block">
-                            <div class="workers-avatar">
-                                <img src="/img/avatar-default.svg" alt="avatar-default">
-                            </div>
-                            <div class="workers-info">
-                                <div class="workers-name">
-                                    Николай Меньщиков
-                                </div>
-                                <div class="workers-specialization">
-                                    Дизайн, верстка
-                                </div>
-                                <div class="workers-exp">
-                                    <div class="exp-logo-container">
-                                        <img src="/img/calendar.svg" alt="calendar">
-                                    </div>
-                                    <span class="workers-exp-label">Опыт работы 2 года</span>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

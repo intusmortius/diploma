@@ -27,3 +27,174 @@
         flex-basis: 25%;
     }
 }
+
+#view_workers_profile {
+
+    .profile-avatar-block {
+        flex-basis: 20%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .profile-avatar {
+            max-width: 150px;
+            width: 100%;
+            margin-bottom: 25px;
+
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .profile-info {
+        flex-basis: 75%;
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+
+            .profile-name {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            .profile-edit {
+                width: 18px;
+                height: 18px;
+                cursor: pointer;
+                background-image: url("/img/edit.svg");
+                background-size: contain;
+                transition: background-image .1s ease;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .profile-edit:hover {
+                background-image: url("/img/hover_edit.svg");
+
+            }
+        }
+
+        .profile-subinfo {
+            margin-bottom: 10px;
+        }
+
+        .profile-group {
+            margin-bottom: 10px;
+        }
+
+        .profile-about {
+            margin-bottom: 30px;
+        }
+    }
+}
+
+$primary-color: #b11adc;
+$animation-duration: 0.4s;
+
+@mixin label-inactive() {
+    font-size: 1.2rem;
+    transform: translateY(0);
+}
+
+@mixin label-active() {
+    font-size: 0.75rem;
+    transform: translateY(-14px);
+}
+
+.textarea-field {
+    display: block;
+    margin-bottom: 16px;
+}
+
+.textarea-field__label {
+    @include label-active();
+    display: block;
+    font-weight: normal;
+    left: 0;
+    margin: 0;
+    padding: 18px 12px 0;
+    position: absolute;
+    top: 0;
+    transition: all $animation-duration;
+    width: 100%;
+}
+
+.textarea-field__control {
+    background: #eee;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.textarea-field__bar {
+    border-bottom: 2px solid $primary-color;
+    bottom: 0;
+    content: "";
+    display: block;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    transform: scaleX(0);
+    transition: all $animation-duration;
+    width: 1%;
+}
+
+.textarea-field__input,
+.textarea-field__textarea {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid #999;
+    color: #333;
+    display: block;
+    font-size: 1.2rem;
+    margin-top: 24px;
+    outline: 0;
+    padding: 0 12px 10px 12px;
+    width: 100%;
+
+    // IE 10-11
+    &:-ms-input-placeholder {
+        ~.textarea-field__label {
+            @include label-inactive();
+        }
+    }
+
+    // All other browsers except Edge
+    &:placeholder-shown {
+        ~.textarea-field__label {
+            @include label-inactive();
+        }
+    }
+
+    &:focus {
+        ~.textarea-field__label {
+            color: $primary-color;
+            @include label-active();
+        }
+
+        ~.textarea-field__bar {
+            // border-bottom: 2px solid $primary-color;
+            // transform: scaleX(150);
+
+        }
+
+        border-width: 3px;
+        border-image: linear-gradient(to right, #656BEA, #8A2BE2);
+        border-image-slice: 1;
+    }
+}
+
+.textarea-field__textarea {
+    height: 150px;
+}
