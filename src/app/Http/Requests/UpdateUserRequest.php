@@ -14,7 +14,7 @@ class UpdateUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user()->can('update', User::class);
+        return $this->user()->can('update', auth()->user());
     }
 
     /**
@@ -33,9 +33,7 @@ class UpdateUserRequest extends FormRequest
                 "worker_skills" => ["string", "nullable"],
                 "about" => ["string", "max:600", "nullable"],
             ];
-        }
-
-        if ($this->user()->hasRole("customer")) {
+        } else if ($this->user()->hasRole("customer")) {
             return [];
         }
     }

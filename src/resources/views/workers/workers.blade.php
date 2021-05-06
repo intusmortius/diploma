@@ -1,10 +1,12 @@
 <x-app>
     <section id="view_workers" class="section">
-        <div class="container-fluid">
+        <div class="container">
             <h2 class="section-header">{{ __("Workers") }}</h2>
             <div class="section-content">
                 <div class="workers-block-container">
-
+                    @empty($users)
+                    <div class="empty-container">{{__("No workers yet")}}</div>
+                    @else
                     @foreach ($users as $user)
                     <div class="workers-block">
                         <div class="workers-block-left">
@@ -38,6 +40,8 @@
                         @endcan
                     </div>
                     @endforeach
+                    {{$users->links("vendor.pagination.default")}}
+                    @endempty
                 </div>
                 <div class="filters">
                     <h4 class="filters-header">{{ __("Filter") }}</h4>

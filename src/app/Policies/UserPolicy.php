@@ -52,7 +52,7 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        return auth()->user()->id === $model->id;
+        return $user->id === $model->id;
     }
 
     /**

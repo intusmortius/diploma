@@ -39,5 +39,17 @@
     "Description":"Опис",
     "About worker":"Про працівника",
     "Responsibilities":"Обов'язки",
-    "Requirements":"Вимоги"
+    "Requirements":"Вимоги",
+    "a minute ago": "хвилину тому",
+    "minutes ago": "хвилин тому",
+    "hour ago": "годину тому",
+    "hours ago": "години тому",
+    "one day ago": "один день тому",
+    "No vacancies yet": "Поки що немає вакансій",
+    "No workers yet": "Ще немає робітників",
+    "Create": "Створити",
+    "Vacancy": "Вакансiя",
+    "Posted": "Опубліковано",
+    "Skills and Expertise": "Навички та досвід",
+    "Rate": "Ставка"
 }
