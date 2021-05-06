@@ -1,6 +1,6 @@
 <x-app>
     <section class="section">
-        <div class="container-fluid">
+        <div class="container">
             <div class="container">
                 <div class="home-search">
                     <input type="text" class="home-search-input" placeholder="{{ __("Search") }}">
@@ -9,23 +9,29 @@
                     <div class="main-banner-description">
                         <h2 class="banner-header">{{ __("Mutual assistance site") }}</h2>
                         <p class="banner-subtitle">{{__("Here you can find those who implement your ideas")}}</p>
-                        <button class="btn flare-effect">{{__("Find a performer")}}</button>
+                        <a href="{{route("workers")}}">
+                            <button class="btn flare-effect">{{__("Find a performer")}}</button>
+                        </a>
                     </div>
                     <div class="banner-logo">
                         <img src="/img/handshaking-logo.svg" alt="handshaking">
                     </div>
                 </nav>
+                @guest
                 <div class="main-banner">
                     <div class="main-banner-description">
                         <p class="banner-subtitle">
                             {{ __("Sign up as a freelancer and start looking for a job right now") }}
                         </p>
-                        <button class="btn flare-effect">{{ __("Become a performer") }}</button>
+                        <a href="/register">
+                            <button class="btn flare-effect">{{ __("Become a performer") }}</button>
+                        </a>
                     </div>
                     <div class="banner-logo">
                         <img src="/img/dollar-logo.svg" alt="handshaking">
                     </div>
                 </div>
+                @endguest
                 <div class="home-slider">
                     <div class="swiper-container home-slider-container">
                         <div class="swiper-wrapper">
@@ -37,6 +43,8 @@
                         <div class="swiper-pagination"></div>
                     </div>
                 </div>
+                @empty($users)
+                @else
                 <div class="main-workers">
                     <div class="workers-header">
                         {{ __("The best workers") }}
@@ -67,6 +75,8 @@
                         @endforeach
                     </div>
                 </div>
+                @endempty
+
             </div>
         </div>
     </section>

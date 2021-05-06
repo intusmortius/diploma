@@ -50,4 +50,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function vacancy()
+    {
+        return $this->hasOne(Vacancy::class, "author_id");
+    }
 }

@@ -1,9 +1,9 @@
 <x-app>
     <section class="section">
-        <div class="container-fluid">
+        <div class="container">
             <h2 class="section-header">{{ __("Edit") }}</h2>
             <div class="section-content">
-                <form id="auth_form" class="auth-form" method="POST" action="{{ route('workers-update', $user) }}">
+                <form id="" class="form-block" method="POST" action="{{ route('workers-update', $user) }}">
                     @csrf
 
                     <div class="form-group field">

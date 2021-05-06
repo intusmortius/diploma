@@ -555,6 +555,50 @@ button.swiper-pagination-bullet {
 }
 
 @charset "UTF-8";
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "Nunito", sans-serif;
+  font-size: 400px;
+  font-size: 14px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+a:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.empty-container {
+  margin-top: 20px;
+  height: 30px;
+  font-size: 18px;
+  text-align: center;
+  color: gray;
+}
+
+.section {
+  padding: 30px 0;
+}
+
 .form-group {
   position: relative;
 }
@@ -863,6 +907,41 @@ button.swiper-pagination-bullet {
   align-items: center;
 }
 
+.dark-link {
+  color: #000000;
+  transition: 0.1s color ease;
+}
+.dark-link:hover {
+  color: #404040;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+}
+.pagination li {
+  list-style: none;
+  margin: 0 10px;
+  font-weight: bold;
+}
+.pagination li a {
+  color: #000000;
+  transition: 0.1s color ease;
+}
+.pagination li svg {
+  fill: #000000;
+  transition: 0.1s fill ease;
+}
+.pagination li:hover,
+.pagination a:hover {
+  color: #656BEA;
+}
+.pagination li:hover svg,
+.pagination a:hover svg {
+  fill: #656BEA;
+}
+
 .btn {
   font-family: "Nunito", sans-serif;
   background: #656BEA;
@@ -1124,66 +1203,138 @@ button.swiper-pagination-bullet {
 }
 #view_vacancies .vacancies-block-container .vacancies-block .vacancies-name {
   font-size: 18px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
-#view_vacancies .vacancies-block-container .vacancies-block .vacancies-tags-container {
+#view_vacancies .vacancies-block-container .vacancies-block .vacancies-down {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+#view_vacancies .vacancies-block-container .vacancies-block .vacancies-down .vacancies-tags-container {
+  flex-basis: 50%;
   display: flex;
   flex-wrap: wrap;
+}
+#view_vacancies .vacancies-block-container .vacancies-block .vacancies-down .vacancies-date {
+  margin-top: 10px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  color: gray;
+  font-size: 16px;
 }
 #view_vacancies .filters {
   flex-basis: 25%;
 }
 
-.auth-form {
+.vacancy-title-container .vacancy-title {
+  font-size: 22px;
+  padding: 10px 0;
+  max-width: 800px;
+  overflow: hidden;
+}
+
+.vacancy-header-container {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.vacancy-author-container .vacancy-author-name {
+  color: #656BEA;
+  margin-bottom: 5px;
+  opacity: 0.8;
+}
+.vacancy-author-container .vacancy-post-date {
+  font-weight: 300;
+  color: gray;
+}
+
+.vacancy-info-container {
+  padding: 10px;
+}
+.vacancy-info-container .vacancy-info-block {
+  margin-bottom: 20px;
+}
+.vacancy-info-container .vacancy-info-block .vacancy-info-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.vacancy-info-container .vacancy-info-block .vacancy-info-text {
+  font-size: 14px;
+}
+
+.vacancy-skills-container {
+  display: flex;
+}
+
+.vacancy-comments-container .vacancy-comments-title {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.vacancy-comments-container .vacancy-comments-list .vacancy-comment {
+  margin-bottom: 20px;
+  max-width: 50%;
+}
+.vacancy-comments-container .vacancy-comments-list .vacancy-comment .vacancy-comment-name-block {
+  display: flex;
+  margin-bottom: 10px;
+}
+.vacancy-comments-container .vacancy-comments-list .vacancy-comment .vacancy-comment-name-block .vacancy-worker-avatar {
+  max-width: 50px;
+  max-height: 50px;
+}
+.vacancy-comments-container .vacancy-comments-list .vacancy-comment .vacancy-comment-name-block .vacancy-worker-avatar img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
+}
+.vacancy-comments-container .vacancy-comments-list .vacancy-comment .vacancy-comment-name-block .vacancy-comment-right {
+  position: relative;
+  margin-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.vacancy-comments-container .vacancy-comments-list .vacancy-comment .vacancy-comment-name-block .vacancy-comment-right .vacancy-worker-name {
+  font-size: 16px;
+}
+.vacancy-comments-container .vacancy-comments-list .vacancy-comment .vacancy-comment-name-block .vacancy-comment-right .btn {
+  height: 30px;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+.vacancy-comments-container .vacancy-comments-list .vacancy-comment .vacancy-comment-text {
+  margin-bottom: 5px;
+}
+.vacancy-comments-container .vacancy-comments-list .vacancy-comment .vacancy-comment-date {
+  text-align: right;
+  color: #4d4d4d;
+}
+
+.form-block {
   margin: auto;
   padding: 20px 20px;
   width: 45%;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  margin-bottom: 35px;
 }
-.auth-form .form-group {
+.form-block .form-group {
   padding: 15px 0 0;
   margin-bottom: 20px;
 }
-.auth-form .sel {
+.form-block .sel {
   margin-bottom: 20px;
   width: 100%;
 }
 
-*,
-*:before,
-*:after {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  box-sizing: border-box;
-  outline: none;
-}
-
-html,
-body {
-  height: 100%;
-  font-family: "Nunito", sans-serif;
-  font-size: 400px;
-  font-size: 14px;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-}
-
-a {
-  text-decoration: none;
-  color: #ffffff;
-}
-
-a:hover {
-  text-decoration: none;
-  color: #ffffff;
-}
-
 .container-fluid {
-  max-width: 1125px;
+  max-width: 100%;
   margin: auto;
   height: 100%;
 }
@@ -1293,10 +1444,7 @@ a:hover {
   }
 }
 .container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  max-width: 900px;
+  max-width: 1200px;
   margin: auto;
 }
 
@@ -1375,6 +1523,7 @@ a:hover {
 
 .workers-avatar {
   max-width: 90px;
+  min-width: 90px;
   margin-right: 20px;
 }
 .workers-avatar img {

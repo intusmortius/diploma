@@ -1,9 +1,9 @@
 <x-app>
     <section class="section">
-        <div class="container-fluid">
+        <div class="container">
             <h2 class="section-header">{{ __("Registration") }}</h2>
             <div class="section-content">
-                <form id="auth_form" class="auth-form" method="POST" action="{{ route('register') }}"
+                <form id="auth_form" class="form-block" method="POST" action="{{ route('register') }}"
                     x-data="{role_id: 0}">
                     @csrf
 

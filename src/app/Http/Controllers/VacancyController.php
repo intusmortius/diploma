@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateVacancyRequest;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class VacancyController extends Controller
      */
     public function index()
     {
-        return view("vacancies.vacancies");
+        $vacancies = Vacancy::latest()->paginate(20);
+        return view("vacancies.vacancies", ["vacancies" => $vacancies]);
     }
 
     /**
@@ -33,9 +35,13 @@ class VacancyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateVacancyRequest $request)
     {
-        //
+        $worker_id = ["author_id" => auth()->user()->id];
+        $validate = $request->validated();
+        $attributes = array_merge($validate, $worker_id);
+        Vacancy::firstOrCreate($attributes);
+        return redirect(route("vacancies"));
     }
 
     /**
@@ -46,7 +52,7 @@ class VacancyController extends Controller
      */
     public function show(Vacancy $vacancy)
     {
-        //
+        return view("vacancies.show", ["vacancy" => $vacancy]);
     }
 
     /**

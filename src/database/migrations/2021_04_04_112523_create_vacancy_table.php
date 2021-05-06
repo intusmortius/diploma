@@ -18,10 +18,10 @@ class CreateVacancyTable extends Migration
             $table->foreignId("author_id")->constrained('users')->onDelete("cascade");
             $table->string("name");
             $table->text("description");
-            $table->text("about_worker");
-            $table->text("responsobilities");
-            $table->text("requirements");
-            $table->text("personal_skills");
+            $table->text("about_worker")->nullable();
+            $table->text("responsibilities")->nullable();
+            $table->text("requirements")->nullable();
+            $table->text("personal_skills")->nullable();
             $table->timestamps();
         });
     }

@@ -1,9 +1,9 @@
 <x-app>
     <section class="section">
-        <div class="container-fluid">
+        <div class="container">
             <h2 class="section-header">{{ __("Authorization") }}</h2>
             <div class="section-content">
-                <form class="auth-form" method="POST" action="{{ route('login') }}">
+                <form class="form-block" method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="form-group field">
                         <input type="input" class="form-field" placeholder="{{ __("Email") }}" name="email" id='email'

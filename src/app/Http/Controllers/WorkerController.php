@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
+// use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
@@ -19,12 +20,12 @@ class WorkerController extends Controller
      */
     public function index()
     {
-        $all_users = User::with('roles')->get();
+        $all_users = User::with("roles")->get();
         $users = $all_users->filter(function ($user) {
             return $user->hasRole('worker');
         });
-        // $pagination_users = $this->paginate($users, 5);
-        return view("workers.workers", ['users' => $users]);
+        $pagination_users = $this->paginate($users, 20, null, ["path" => "workers/"]);
+        return view("workers.workers", ['users' => $pagination_users]);
     }
 
     /**
@@ -95,12 +96,10 @@ class WorkerController extends Controller
         //
     }
 
-    public function paginate($items, $perPage = 15, $page = null, $options = [])
+    public function paginate($items, $perPage = 5, $page = null, $options = [])
     {
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
-
         $items = $items instanceof Collection ? $items : Collection::make($items);
-
         return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 }

@@ -1,9 +1,9 @@
 <x-app>
     <section class="section">
-        <div class="container-fluid">
+        <div class="container">
             <h2 class="section-header">{{ __("New Vacancy") }}</h2>
             <div class="section-content">
-                <form id="auth_form" class="auth-form" method="POST" action="">
+                <form id="" class="form-block" method="POST" action="{{route("vacancy-store")}}">
                     @csrf
 
                     <div class="form-group field">
@@ -40,7 +40,7 @@
                     @enderror
                     <div class="form-group field">
                         <textarea id="responsibilities	" class="form-field form-field-textarea"
-                            placeholder="{{ __("Responsibilities") }}" name="responsibilities	"
+                            placeholder="{{ __("Responsibilities") }}" name="responsibilities"
                             value="{{ old("responsibilities	") ?? "" }}"></textarea>
                         <label for="responsibilities	" class="form-label">{{ __("Responsibilities") }}</label>
                     </div>
@@ -60,7 +60,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
-                    <div class="form-submit"><button class="btn flare-effect">{{ __("Edit") }}</button></div>
+                    <div class="form-submit"><button class="btn flare-effect">{{ __("Create") }}</button></div>
                 </form>
             </div>
         </div>

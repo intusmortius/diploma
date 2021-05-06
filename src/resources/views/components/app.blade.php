@@ -21,7 +21,7 @@
 
 <body>
     <header class="header">
-        <div class="container-fluid">
+        <div class="container">
             <div class="header-container">
                 <div class="header-nav">
                     <div class="header-logo">
@@ -55,7 +55,7 @@
         {{$slot}}
     </main>
     <footer class="footer">
-        <div class="container-fluid">
+        <div class="container">
             <div class="footer-container">
                 <div class="footer-copyright">
                     © {{__('Development of a student of the VT-17 group Krutikov Vlad')}}

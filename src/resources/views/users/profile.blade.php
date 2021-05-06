@@ -1,6 +1,6 @@
 <x-app>
     <section id="view_workers_profile" class="section">
-        <div class="container-fluid">
+        <div class="container">
             <h2 class="section-header">{{ __("Profile") }}</h2>
             <div class="section-content flex justify-content-between">
                 <div class="profile-avatar-block flex-column">

@@ -15,21 +15,164 @@
 
             .vacancies-name {
                 font-size: 18px;
-                margin-bottom: 15px;
+                margin-bottom: 10px;
             }
 
             .vacancies-description {
                 // margin-bottom: 10px;
             }
 
-            .vacancies-tags-container {
+            .vacancies-down {
                 display: flex;
-                flex-wrap: wrap;
+                align-items: flex-start;
+                justify-content: space-between;
+
+                .vacancies-tags-container {
+                    flex-basis: 50%;
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+
+                .vacancies-date {
+                    margin-top: 10px;
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    color: lighten($black, 50%);
+                    font-size: 16px;
+                }
             }
+
+
         }
     }
 
     .filters {
         flex-basis: 25%;
     }
+}
+
+
+// Vacancies Show
+
+.vacancy-title-container {
+    .vacancy-title {
+        font-size: 22px;
+        padding: 10px 0;
+        max-width: 800px;
+        overflow: hidden;
+    }
+}
+
+.vacancy-header-container {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.vacancy-author-container {
+
+    .vacancy-author-name {
+        color: $primary;
+        margin-bottom: 5px;
+        opacity: 0.8;
+    }
+
+    .vacancy-post-date {
+        font-weight: 300;
+        color: lighten($black, 50%)
+    }
+}
+
+.vacancy-info-container {
+    padding: 10px;
+
+    .vacancy-info-block {
+        margin-bottom: 20px;
+
+        .vacancy-info-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .vacancy-info-text {
+            font-size: 14px;
+        }
+    }
+}
+
+.vacancy-skills-container {
+    display: flex;
+}
+
+
+.vacancy-comments-container {
+    .vacancy-comments-title {
+        text-align: center;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .vacancy-comments-list {
+        .vacancy-comment {
+            margin-bottom: 20px;
+            max-width: 50%;
+
+            .vacancy-comment-name-block {
+                display: flex;
+                margin-bottom: 10px;
+
+                .vacancy-worker-avatar {
+                    max-width: 50px;
+                    max-height: 50px;
+
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: top;
+                    }
+                }
+
+                .vacancy-comment-right {
+                    position: relative;
+                    margin-left: 10px;
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+
+                    .vacancy-worker-name {
+                        font-size: 16px;
+                    }
+
+                    .btn {
+                        height: 30px;
+                        font-size: 16px;
+                        padding: 5px 10px;
+                    }
+                }
+            }
+
+            .vacancy-comment-text {
+                margin-bottom: 5px;
+            }
+
+            .vacancy-comment-date {
+                text-align: right;
+                color: lighten($black, 30%);
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 }

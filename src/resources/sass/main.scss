@@ -9,51 +9,12 @@
 @import "../sass/auth/auth";
 
 
-*,
-*:before,
-*:after {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-    outline: none;
-}
 
-html {
-    // position: fixed;
-    // top: 0;
-    // bottom: 0;
-    // left: 0;
-    // right: 0;
-}
-
-html,
-body {
-    height: 100%;
-    // font-family: 'Open Sans', sans-serif;
-    font-family: 'Nunito', sans-serif;
-    font-size: 400px;
-    font-size: 14px;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-a {
-    text-decoration: none;
-    color: $white;
-}
-
-a:hover {
-    text-decoration: none;
-    color: $white;
-}
 
 
 .container-fluid {
-    max-width: 1125px;
+    // max-width: 1125px;
+    max-width: 100%;
     margin: auto;
     height: 100%;
 }
@@ -172,10 +133,10 @@ a:hover {
 
 
 .container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    max-width: 900px;
+    // display: flex;
+    // align-items: center;
+    // flex-direction: column;
+    max-width: 1200px;
     margin: auto;
 }
 
@@ -262,6 +223,7 @@ a:hover {
 
 .workers-avatar {
     max-width: 90px;
+    min-width: 90px;
     margin-right: 20px;
 
     img {
