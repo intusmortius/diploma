@@ -49,24 +49,35 @@
                 </div>
                 <div class="vacancy-comments-container">
                     <h4 class="vacancy-comments-title">{{ __("Rate") }}</h4>
-                    <div class="vacancy-comments-list">
+                    <div class="vacancy-comment-add-block">
+                        <textarea id="vacancy_comment_add_textarea" name="" id="" cols="30" class="vacancy-comment-add"
+                            maxlength="1200" placeholder="{{ __("Add comment") }}"
+                            data-vacancy="{{ $vacancy->id }}"></textarea>
+                        <button id="vacancy_comment_add_submit" class="btn flare-effect vacancy-comment-add-btn">
+                            {{ __("Add comment") }}
+                        </button>
+                    </div>
+                    <div id="vacancy_comment_list" class="vacancy-comments-list">
+                        @forelse ($comments as $comment)
                         <div class="vacancy-comment">
                             <div class="vacancy-comment-name-block">
                                 <div class="vacancy-worker-avatar">
                                     <img src="/img/avatar-default.svg" alt="avatar">
                                 </div>
                                 <div class="vacancy-comment-right">
-                                    <div class="vacancy-worker-name">John Coll</div>
+                                    <div class="vacancy-worker-name">{{ $comment->author->name }}</div>
                                     <button class="btn flare-effect">{{ __("Contact") }}</button>
                                 </div>
                             </div>
                             <div class="vacancy-comment-text">
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum mollitia possimus vel
-                                earum repellat odit odio voluptates cupiditate perferendis dolor fugit saepe,
-                                consectetur distinctio voluptas illum veritatis natus est perspiciatis!
+                                {{ $comment->text }}
                             </div>
-                            <div class="vacancy-comment-date">{{ __("Posted") }}: 9 hours ago</div>
+                            <div class="vacancy-comment-date">{{ __("Posted") }}: {{ $comment->getDiffDate() }}</div>
                         </div>
+                        @empty
+                        <div class="empty-container">{{__("No comments yet")}}</div>
+                        @endforelse
+
                     </div>
                 </div>
             </div>

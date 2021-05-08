@@ -24,7 +24,7 @@ class WorkerController extends Controller
         $users = $all_users->filter(function ($user) {
             return $user->hasRole('worker');
         });
-        $pagination_users = $this->paginate($users, 20, null, ["path" => "workers/"]);
+        $pagination_users = $this->paginate($users, 10, null, ["path" => "workers/"]);
         return view("workers.workers", ['users' => $pagination_users]);
     }
 
