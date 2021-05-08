@@ -2057,12 +2057,59 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sliders__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_sliders */ "./resources/js/_sliders.js");
 /* harmony import */ var _select__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_select */ "./resources/js/_select.js");
 /* harmony import */ var _select__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_select__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
-/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(alpinejs__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _vacancies_vacancies__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./vacancies/_vacancies */ "./resources/js/vacancies/_vacancies.js");
+/* harmony import */ var _vacancies_vacancies__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_vacancies_vacancies__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
+/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(alpinejs__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
 
+
+
+/***/ }),
+
+/***/ "./resources/js/vacancies/_vacancies.js":
+/*!**********************************************!*\
+  !*** ./resources/js/vacancies/_vacancies.js ***!
+  \**********************************************/
+/***/ (() => {
+
+$(document).ready(function () {
+  $("#vacancy_comment_add_submit").on("click", addComment);
+});
+
+function addComment() {
+  var el = $("#vacancy_comment_add_textarea");
+  var text = el.val();
+  var vacancy_id = el.attr("data-vacancy");
+
+  var _token = $("meta[name='csrf-token']").attr("content");
+
+  if (text) {
+    $.ajax({
+      type: "POST",
+      url: "/vacancies/comments",
+      data: {
+        _token: _token,
+        text: text,
+        vacancy_id: vacancy_id
+      },
+      dataType: 'json',
+      success: function success(response) {
+        if (response && response.text && response.name && response.create_at) {
+          var container = $("#vacancy_comment_list");
+          var html = "\n                    <div class=\"vacancy-comment\">\n                        <div class=\"vacancy-comment-name-block\">\n                            <div class=\"vacancy-worker-avatar\">\n                                <img src=\"/img/avatar-default.svg\" alt=\"avatar\">\n                            </div>\n                            <div class=\"vacancy-comment-right\">\n                                <div class=\"vacancy-worker-name\">".concat(response.name, "</div>\n                                <button class=\"btn flare-effect\">").concat(response.contact || "Contact", "</button>\n                            </div>\n                        </div>\n                        <div class=\"vacancy-comment-text\">\n                          ").concat(response.text, "\n                        </div>\n                        <div class=\"vacancy-comment-date\">").concat(response.posted || "Posted", ": ").concat(response.create_at, "</div>\n                    </div>");
+          el.val("");
+          container.prepend(html);
+        }
+      },
+      error: function error(response) {
+        console.log(response);
+      }
+    });
+  }
+}
 
 /***/ }),
 
@@ -3861,6 +3908,19 @@ var scroll = shortcut('scroll');
 /*!**********************************!*\
   !*** ./resources/sass/main.scss ***!
   \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/admin/admin.scss":
+/*!*****************************************!*\
+  !*** ./resources/sass/admin/admin.scss ***!
+  \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -14174,7 +14234,8 @@ _esm_components_core_core_class__WEBPACK_IMPORTED_MODULE_0__.default.use(compone
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/main": 0,
-/******/ 			"css/main": 0
+/******/ 			"css/main": 0,
+/******/ 			"css/admin": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -14222,8 +14283,9 @@ _esm_components_core_core_class__WEBPACK_IMPORTED_MODULE_0__.default.use(compone
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/main"], () => (__webpack_require__("./resources/js/main.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/main"], () => (__webpack_require__("./resources/sass/main.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/main","css/admin"], () => (__webpack_require__("./resources/js/main.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/main","css/admin"], () => (__webpack_require__("./resources/sass/main.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/main","css/admin"], () => (__webpack_require__("./resources/sass/admin/admin.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

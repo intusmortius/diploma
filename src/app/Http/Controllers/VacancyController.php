@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateVacancyRequest;
+use App\Models\Comment;
 use App\Models\Vacancy;
+use GrahamCampbell\ResultType\Result;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class VacancyController extends Controller
 {
@@ -52,7 +55,7 @@ class VacancyController extends Controller
      */
     public function show(Vacancy $vacancy)
     {
-        return view("vacancies.show", ["vacancy" => $vacancy]);
+        return view("vacancies.show", ["vacancy" => $vacancy, "comments" => $vacancy->comments->reverse()]);
     }
 
     /**
@@ -87,5 +90,38 @@ class VacancyController extends Controller
     public function destroy(Vacancy $vacancy)
     {
         //
+    }
+
+    public function addComment(Request $request)
+    {
+        if ($request->wantsJson() && $request) {
+            $user = auth()->user();
+            $vacancy = Vacancy::where("id", $request->vacancy_id)->first();
+            $text = $request->text;
+
+
+            if (isset($user) && isset($vacancy) && !empty($text)) {
+
+                $attributes = [
+                    "user_id" => $user->id,
+                    "vacancy_id" => $vacancy->id,
+                    "text" => $text
+                ];
+
+                $comment = Comment::updateOrCreate($attributes);
+
+                $data = [
+                    "text" => $comment->text,
+                    "create_at" => $comment->getDiffDate(),
+                    "name" => $user->name,
+                    "posted" => __('Posted'),
+                    "contact" => __('Contact'),
+                ];
+
+                return Response::json($data);
+            } else {
+                return false;
+            }
+        }
     }
 }

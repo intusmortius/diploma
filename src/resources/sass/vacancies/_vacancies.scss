@@ -114,6 +114,38 @@
         margin-bottom: 10px;
     }
 
+    .vacancy-comment-add-block {
+        max-width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .vacancy-comment-add {
+            max-width: 100%;
+            min-width: 100%;
+            width: 100%;
+            min-height: 90px;
+            max-height: 250px;
+            border: 1px solid lighten($black, 30%);
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .vacancy-comment-add:focus {
+            border-color: $primary;
+            box-shadow: 0 0 8px 0 $primary;
+        }
+
+        .vacancy-comment-add-btn {
+            margin-bottom: 30px;
+            height: 100%;
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+
+    }
+
     .vacancy-comments-list {
         .vacancy-comment {
             margin-bottom: 20px;
@@ -122,6 +154,7 @@
             .vacancy-comment-name-block {
                 display: flex;
                 margin-bottom: 10px;
+                overflow: hidden;
 
                 .vacancy-worker-avatar {
                     max-width: 50px;
