@@ -7,11 +7,11 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-# cw-etm-portal
+# diploma
 
 ## About
 
-This project is a very simple website that provides interaction with various educational and methodological manuals of university teachers.
+Internet platform for the organization of remote work of students and graduates of the Department of Informatics.
 
 ## Installation and using
 
@@ -47,8 +47,6 @@ docker-compose run --rm artisan db:create
 9. Then run migrations and seeds, which will create the necessary db data:
 ```
 docker-compose run --rm artisan migrate
-docker-compose run --rm artisan db:seed --class=PermissionsSeeder
-docker-compose run --rm artisan db:seed --class=SuperAdminSeeder
 ```
 10. Create a symlink for storing public data:
 ```
@@ -70,6 +68,7 @@ docker-compose run --rm npm ...
 
 This project is licensed under the [GPL-3.0 License](LICENSE).
 
-## Afterwords
+## Credits
 
-I sincerely apologize for the monstrous naming of commits)
+[andinoriel](https://github.com/andinoriel/) - [laravel docker containerization](https://github.com/Andinoriel/docker-backend-laravel)
+
