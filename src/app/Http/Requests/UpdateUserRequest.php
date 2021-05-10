@@ -24,17 +24,18 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules()
     {
-        if ($this->user()->hasRole("worker")) {
-            return [
-                "name" => ["required", "min:4", "string"],
-                "worker_group" => ["string", "nullable"],
-                "worker_cathedra" => ["string", "nullable"],
-                "worker_faculty" => ["string", "nullable"],
-                "worker_skills" => ["string", "nullable"],
-                "about" => ["string", "max:600", "nullable"],
-            ];
-        } else if ($this->user()->hasRole("customer")) {
-            return [];
-        }
+        // if ($this->user()->hasRole("worker")) {
+        return [
+            "name" => ["required", "min:4", "string"],
+            "worker_group" => ["string", "nullable"],
+            "worker_cathedra" => ["string", "nullable"],
+            "worker_faculty" => ["string", "nullable"],
+            "worker_skills" => ["string", "nullable"],
+            "about" => ["string", "max:600", "nullable"],
+            "tags" => ["nullable"]
+        ];
+        // } else if ($this->user()->hasRole("customer")) {
+        //     return [];
+        // }
     }
 }

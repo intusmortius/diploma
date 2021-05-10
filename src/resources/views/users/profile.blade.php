@@ -28,18 +28,16 @@
                     <p class="profile-about">
                         {{$user->about}}
                     </p>
+                    @isset($tags)
                     <span class="profile-subinfo">{{__("Skills")}}:</span>
                     <div class="filters">
                         <div class="filters-categories-container">
-                            <span class="filters-category">JavaScript</span>
-                            <span class="filters-category">HTML</span>
-                            <span class="filters-category">C++</span>
-                            <span class="filters-category">PHP</span>
-                            <span class="filters-category">Design</span>
-                            <span class="filters-category">Python</span>
-                            <span class="filters-category">C#</span>
+                            @foreach ($tags as $tag)
+                            <span class="filters-category">{{ $tag->name }}</span>
+                            @endforeach
                         </div>
                     </div>
+                    @endisset
                 </div>
             </div>
         </div>

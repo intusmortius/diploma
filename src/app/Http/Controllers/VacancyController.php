@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateVacancyRequest;
 use App\Models\Comment;
+use App\Models\Tag;
 use App\Models\Vacancy;
 use GrahamCampbell\ResultType\Result;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class VacancyController extends Controller
     public function index()
     {
         $vacancies = Vacancy::latest()->paginate(20);
-        return view("vacancies.vacancies", ["vacancies" => $vacancies]);
+        return view("vacancies.vacancies", ["vacancies" => $vacancies, "tags" => Tag::all()]);
     }
 
     /**
@@ -42,9 +43,38 @@ class VacancyController extends Controller
     {
         $worker_id = ["author_id" => auth()->user()->id];
         $validate = $request->validated();
-        $attributes = array_merge($validate, $worker_id);
-        Vacancy::firstOrCreate($attributes);
-        return redirect(route("vacancies"));
+
+        // get data for creating vacancy
+        if (isset($worker_id) && isset($validate)) {
+            $attributes = array_merge($validate, $worker_id);
+            $tags = [];
+
+            //get tags to associate them with vacancy
+            if (isset($attributes["tags"])) {
+                foreach ($attributes["tags"] as $tag) {
+                    array_push($tags, Tag::firstOrCreate(["name" => $tag])->id);
+                }
+                unset($attributes["tags"]);
+            }
+
+
+            //creating new vacancy
+            $vacancy = Vacancy::firstOrCreate($attributes);
+
+
+
+            //associate tags with vacancy
+            if (!empty($tags)) {
+                $vacancy->tags()->sync($tags);
+            } else {
+                $vacancy->tags()->detach($vacancy->tags->pluck("id"));
+            }
+
+            //redirect to vacancy page
+            return redirect(route("vacancies-show", $vacancy));
+        } else {
+            return back()->withInput();
+        }
     }
 
     /**
@@ -55,7 +85,7 @@ class VacancyController extends Controller
      */
     public function show(Vacancy $vacancy)
     {
-        return view("vacancies.show", ["vacancy" => $vacancy, "comments" => $vacancy->comments->reverse()]);
+        return view("vacancies.show", ["vacancy" => $vacancy, "tags" => $vacancy->tags, "comments" => $vacancy->comments->reverse()]);
     }
 
     /**

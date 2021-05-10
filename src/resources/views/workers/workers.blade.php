@@ -49,13 +49,11 @@
                     <div class="filters-categories">
                         <h4 class="filters-categories-specialization">{{ __("By skills") }}</h4>
                         <div class="filters-categories-container">
-                            <span class="filters-category">JavaScript</span>
-                            <span class="filters-category">HTML</span>
-                            <span class="filters-category">C++</span>
-                            <span class="filters-category">PHP</span>
-                            <span class="filters-category">Design</span>
-                            <span class="filters-category">Python</span>
-                            <span class="filters-category">C#</span>
+                            @forelse ($tags as $tag)
+                            <span class="filters-category">{{ $tag->name }}</span>
+                            @empty
+                            <div class="empty-container">{{__("No tags yet")}}</div>
+                            @endforelse
                         </div>
                     </div>
                 </div>

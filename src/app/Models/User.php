@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
 
     use HasFactory, Notifiable, HasRoles;
@@ -50,6 +50,11 @@ class User extends Authenticatable
     public function vacancy()
     {
         return $this->hasOne(Vacancy::class, "author_id");
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
 
     protected $appends = ['resource_url'];

@@ -29,7 +29,9 @@
                     </div>
                     <div class="header-nav-item"><a href="{{route("workers")}}">{{__('Workers')}}</a></div>
                     <div class="header-nav-item"><a href="{{route("vacancies")}}">{{__('Vacancies')}}</a></div>
+                    @can('create_vacancy')
                     <div class="header-nav-item"><a href="{{route("new-vacancy")}}">{{__('New Vacancy')}}</a></div>
+                    @endcan
                 </div>
                 <div class="header-nav">
                     @guest

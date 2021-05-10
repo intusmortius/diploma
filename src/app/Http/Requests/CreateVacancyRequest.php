@@ -30,6 +30,7 @@ class CreateVacancyRequest extends FormRequest
             "about_worker" => ["string", "max:1000", "nullable"],
             "responsibilities" => ["string", "max:1000", "nullable"],
             "requirements" => ["string", "max:1000", "nullable"],
+            "tags" => ["nullable"],
         ];
     }
 }

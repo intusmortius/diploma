@@ -123,5 +123,27 @@ return [
         ],
     ],
 
+    'vacancy' => [
+        'title' => 'Vacancies',
+
+        'actions' => [
+            'index' => 'Vacancies',
+            'create' => 'New Vacancy',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'author_id' => 'Author',
+            'name' => 'Name',
+            'description' => 'Description',
+            'about_worker' => 'About worker',
+            'responsibilities' => 'Responsibilities',
+            'requirements' => 'Requirements',
+            'personal_skills' => 'Personal skills',
+            
+        ],
+    ],
+
     // Do not delete me :) I'm used for auto-generation
 ];

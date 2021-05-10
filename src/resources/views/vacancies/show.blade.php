@@ -37,18 +37,20 @@
                         <p class="vacancy-info-text">{{ $vacancy->requirements }}</p>
                     </div>
                     @endisset
+                    @isset($tags)
                     <div class="vacancy-info-block">
                         <h4 class="vacancy-info-title">{{ __("Skills and Expertise") }}: </h4>
                         <div class="vacancy-skills-container">
-                            <div class="tag">Js</div>
-                            <div class="tag">Design</div>
-                            <div class="tag">C++</div>
-                            <div class="tag">PHP</div>
+                            @foreach ($tags as $tag)
+                            <div class="tag">{{ $tag->name }}</div>
+                            @endforeach
                         </div>
                     </div>
+                    @endisset
                 </div>
                 <div class="vacancy-comments-container">
                     <h4 class="vacancy-comments-title">{{ __("Rate") }}</h4>
+                    @can('apply_to_vacancy')
                     <div class="vacancy-comment-add-block">
                         <textarea id="vacancy_comment_add_textarea" name="" id="" cols="30" class="vacancy-comment-add"
                             maxlength="1200" placeholder="{{ __("Add comment") }}"
@@ -57,6 +59,7 @@
                             {{ __("Add comment") }}
                         </button>
                     </div>
+                    @endcan
                     <div id="vacancy_comment_list" class="vacancy-comments-list">
                         @forelse ($comments as $comment)
                         <div class="vacancy-comment">
