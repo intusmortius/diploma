@@ -1,9 +1,9 @@
 <x-app>
     <section class="section">
         <div class="container">
-            <h2 class="section-header">{{ __("Authorization") }}</h2>
+            <h2 class="section-header">{{ __("Forgot password") }}</h2>
             <div class="section-content">
-                <form class="form-block" method="POST" action="{{ route('login') }}">
+                <form class="form-block" method="POST" action="/forgot-password">
                     @csrf
                     <div class="form-group field">
                         <input type="input" class="form-field" placeholder="{{ __("Email") }}" name="email" id='email'
@@ -15,17 +15,9 @@
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
-                    <div class="form-group field">
-                        <input type="password" class="form-field" placeholder="{{ __("Password") }}" name="password"
-                            id='password' required />
-                        <label for="password" class="form-label">{{ __("Password") }}</label>
-                    </div>
-                    @error('password')
-                    <span class="invalid-feedback is-invalid" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                    <div class="form-forgot-password"><a href="/forgot-password">Forgot password</a></div>
+                    @if (session('status'))
+                    <div class="alert alert-success">{{ session("status") }}</div>
+                    @endif
                     <div class="form-submit"><button class="btn flare-effect">{{ __("Log in") }}</button></div>
                 </form>
             </div>

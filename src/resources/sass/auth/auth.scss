@@ -27,6 +27,21 @@
         margin-bottom: 20px;
     }
 
+    .form-forgot-password {
+        text-align: right;
+        margin-bottom: 20px;
+
+        a {
+            color: $dark-grey-2;
+        }
+    }
+
+    .form-forgot-password:hover {
+        a {
+            text-decoration: underline;
+        }
+    }
+
     .sel {
         margin-bottom: 20px;
         width: 100%;
