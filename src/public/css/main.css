@@ -1396,6 +1396,16 @@ a:hover {
   padding: 15px 0 0;
   margin-bottom: 20px;
 }
+.form-block .form-forgot-password {
+  text-align: right;
+  margin-bottom: 20px;
+}
+.form-block .form-forgot-password a {
+  color: #2E3440;
+}
+.form-block .form-forgot-password:hover a {
+  text-decoration: underline;
+}
 .form-block .sel {
   margin-bottom: 20px;
   width: 100%;
