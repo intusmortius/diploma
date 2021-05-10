@@ -2044,6 +2044,127 @@ var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__.default('.home-slide
 
 /***/ }),
 
+/***/ "./resources/js/_tag.js":
+/*!******************************!*\
+  !*** ./resources/js/_tag.js ***!
+  \******************************/
+/***/ (() => {
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+var inputWrapper = document.querySelector("#tag_input_wrapper");
+var inputEl = document.querySelector("#tag_input_field");
+var tagContainer = document.querySelector("#tag_container");
+var tagRemoveBtn = document.querySelectorAll(".tag_remove_btn");
+var suggestedTagContainer = document.querySelector("#suggested_tag_list"); //add event listeners
+
+if (inputWrapper) inputWrapper.addEventListener("click", inputFocus);
+
+if (inputEl) {
+  inputEl.addEventListener("focusout", blurInput);
+  inputEl.addEventListener("keydown", preventFromSubmit);
+  inputEl.addEventListener("keyup", showSuggestedTags);
+}
+
+if (tagContainer) tagContainer.addEventListener("click", removeTag);
+if (suggestedTagContainer) suggestedTagContainer.addEventListener("click", addSuggestedTag); // functions
+
+function inputFocus() {
+  inputEl.focus();
+  inputWrapper.classList.add("focus");
+}
+
+function blurInput() {
+  inputWrapper.classList.remove("focus");
+}
+
+function addSuggestedTag(e) {
+  if (e.target.closest(".suggested-tag-item")) {
+    inputEl.value = e.target.closest(".suggested-tag-item").innerText;
+    addTag();
+    suggestedTagContainer.classList.add("hide");
+  }
+}
+
+function addTag() {
+  var val = inputEl.value.trim();
+
+  if (val) {
+    var tags = _toConsumableArray(document.querySelector("#tag_container").children);
+
+    var isExist = tags.find(function (tag) {
+      return tag.innerText === val;
+    });
+
+    if (!isExist) {
+      var li = "\n            <li class=\"tag-input-item\">\n            <input type=\"checkbox\" name=\"tags[]\" value=\"".concat(val, "\" class=\"tag-checkbox\" checked>\n                <span class=\"tag-input-item-name\">").concat(val, "</span>\n                <button type=\"button\" class=\"tag-input-item-btn tag_remove_btn\">\n                    <svg width=\"10\" height=\"11\" viewBox=\"0 0 10 11\" fill=\"none\"\n                        xmlns=\"http://www.w3.org/2000/svg\">\n                        <path\n                            d=\"M7.77812 0.707076C8.16865 0.316552 8.80181 0.316552 9.19234 0.707077V0.707077C9.58286 1.0976 9.58286 1.73077 9.19234 2.12129L2.12127 9.19236C1.73075 9.58288 1.09758 9.58288 0.707056 9.19236V9.19236C0.316532 8.80183 0.316532 8.16867 0.707056 7.77814L7.77812 0.707076Z\"\n                            fill=\"white\" />\n                        <rect y=\"1.70706\" width=\"2\" height=\"12\" rx=\"1\"\n                            transform=\"rotate(-45 0 1.70706)\" fill=\"white\" />\n                    </svg>\n                </button>\n            </li>");
+      tagContainer.innerHTML += li;
+      inputEl.value = "";
+    }
+
+    inputEl.value = "";
+  }
+}
+
+function removeTag(e) {
+  if (e.target.closest(".tag-input-item-btn")) {
+    e.target.closest(".tag-input-item").remove();
+  }
+}
+
+function preventFromSubmit(e) {
+  if (e.keyCode == 13) {
+    e.preventDefault();
+    return;
+  }
+}
+
+function showSuggestedTags(e) {
+  if (e.keyCode == 32 || e.keyCode == 13) {
+    e.preventDefault();
+    addTag();
+  }
+
+  var val = inputEl.value;
+  $.ajax({
+    type: "GET",
+    url: "/tags/suggested",
+    data: {
+      _token: $("meta[name='csrf-token']").attr("content"),
+      name: val
+    },
+    dataType: 'json',
+    success: function success(response) {
+      if (response) {
+        suggestedTagContainer.classList.remove("hide");
+        suggestedTagContainer.innerHTML = "";
+        response.forEach(function (el) {
+          var li = document.createElement("li");
+          li.classList.add("suggested-tag-item");
+          li.innerText = el;
+          suggestedTagContainer.appendChild(li);
+        });
+      } else {
+        suggestedTagContainer.classList.add("hide");
+      }
+    },
+    error: function error(response) {// console.log(response)
+    }
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/main.js":
 /*!******************************!*\
   !*** ./resources/js/main.js ***!
@@ -2057,10 +2178,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sliders__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_sliders */ "./resources/js/_sliders.js");
 /* harmony import */ var _select__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_select */ "./resources/js/_select.js");
 /* harmony import */ var _select__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_select__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _vacancies_vacancies__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./vacancies/_vacancies */ "./resources/js/vacancies/_vacancies.js");
-/* harmony import */ var _vacancies_vacancies__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_vacancies_vacancies__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
-/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(alpinejs__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _tag__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_tag */ "./resources/js/_tag.js");
+/* harmony import */ var _tag__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tag__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _vacancies_vacancies__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./vacancies/_vacancies */ "./resources/js/vacancies/_vacancies.js");
+/* harmony import */ var _vacancies_vacancies__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_vacancies_vacancies__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
+/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(alpinejs__WEBPACK_IMPORTED_MODULE_5__);
+
 
 
 

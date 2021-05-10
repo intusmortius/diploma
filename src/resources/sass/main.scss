@@ -175,6 +175,10 @@
         max-width: 30%;
         width: 100%;
         justify-content: center;
+
+        svg {
+            fill: $primary;
+        }
     }
 
 }
@@ -327,4 +331,128 @@
     align-items: center;
     justify-content: flex-start;
     cursor: pointer;
+}
+
+
+.tags-selection-container {}
+
+
+.tag-input-container {
+    position: relative;
+
+    .tag-input-wrapper {
+
+        .tag-input-label {
+            color: $gray;
+            font-size: 1.3rem;
+            margin-bottom: 7px;
+        }
+
+        .tag-input {
+            display: flex;
+            min-height: 40px;
+            border-bottom: 2px solid $gray;
+            cursor: text;
+            flex-wrap: wrap;
+
+            .tag-input-selected-tags {
+                display: flex;
+                align-items: center;
+                list-style: none;
+                flex-wrap: wrap;
+            }
+
+            .tag-input-item {
+                display: flex;
+                align-items: center;
+                // margin-right: 5px;
+                margin: 2px;
+                border-radius: 22px;
+                background-color: darken($primary, 5%);
+                // padding: 5px 10px;
+                padding-right: 0;
+                padding-left: 10px;
+                color: $white;
+                cursor: text;
+                transition: background-color .1s ease;
+            }
+
+            .tag-input-item:hover {
+                background-color: darken($primary, 2%);
+
+                .tag-input-item-btn {
+                    background-color: lighten($primary, 1%);
+                }
+
+                .tag-input-item-btn:hover {
+                    background-color: lighten($primary, 4%);
+                }
+            }
+
+            .tag-checkbox {
+                display: none;
+            }
+
+            .tag-input-item-name {}
+
+            .tag-input-item-btn {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-left: 5px;
+                width: 30px;
+                height: 30px;
+                background-color: darken($primary, 1%);
+                border-radius: 22px;
+                transition: background-color .1s ease;
+                cursor: pointer;
+            }
+
+            .tag-input-field {
+                margin-left: 5px;
+                max-width: 130px;
+                width: 100%;
+                min-height: 38px;
+                font-size: 14px;
+            }
+
+            .suggested-tag-list {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                list-style: none;
+                background-color: $dark-grey-2;
+                border-radius: 10px;
+                z-index: 1000;
+
+                .suggested-tag-item {
+                    color: $white;
+                    font-size: 16px;
+                    padding: 5px 10px;
+                    // border: 1px solid $textGray;
+                    cursor: pointer;
+                }
+
+                .suggested-tag-item:first-of-type {
+                    border-radius: 10px 10px 0 0;
+                }
+
+                .suggested-tag-item:last-of-type {
+                    border-radius: 0 0 10px 10px;
+                }
+
+                .suggested-tag-item:hover {
+                    background-color: $dark-grey-1;
+                }
+            }
+        }
+
+        .tag-input.focus {
+            border-width: 3px;
+            border-image: linear-gradient(to right, $input-color, $input-color-secondary);
+            border-image-slice: 1;
+        }
+    }
 }

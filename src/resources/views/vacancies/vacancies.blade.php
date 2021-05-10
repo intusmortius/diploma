@@ -38,13 +38,14 @@
                         <div class="vacancies-description">
                             {{$vacancy->description}}
                         </div>
+
                         <div class="vacancies-down">
                             <div class="vacancies-tags-container">
-                                <span class="tag">JavaScript</span>
-                                <span class="tag">HTML</span>
-                                <span class="tag">CSS</span>
-                                <span class="tag">C#</span>
-                                <span class="tag">C++</span>
+                                @isset($vacancy->tags)
+                                @foreach ($vacancy->tags as $tag)
+                                <span class="tag">{{$tag->name}}</span>
+                                @endforeach
+                                @endisset
                             </div>
                             <div class="vacancies-date">{{$vacancy->getDiffDate()}}</div>
                         </div>
@@ -60,13 +61,11 @@
                     <div class="filters-categories">
                         <h4 class="filters-categories-specialization">{{ __("By skills") }}</h4>
                         <div class="filters-categories-container">
-                            <span class="filters-category">JavaScript</span>
-                            <span class="filters-category">HTML</span>
-                            <span class="filters-category">C++</span>
-                            <span class="filters-category">PHP</span>
-                            <span class="filters-category">Design</span>
-                            <span class="filters-category">Python</span>
-                            <span class="filters-category">C#</span>
+                            @forelse ($tags as $tag)
+                            <span class="filters-category">{{ $tag->name }}</span>
+                            @empty
+                            <div class="empty-container">{{__("No tags yet")}}</div>
+                            @endforelse
                         </div>
                     </div>
                 </div>

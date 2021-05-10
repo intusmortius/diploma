@@ -592,7 +592,7 @@ a:hover {
   height: 30px;
   font-size: 18px;
   text-align: center;
-  color: gray;
+  color: #9aa5b5;
 }
 
 .section {
@@ -610,7 +610,7 @@ a:hover {
   border-bottom: 2px solid #9b9b9b;
   outline: 0;
   font-size: 1.3rem;
-  color: #000000;
+  color: #22272e;
   padding: 7px 0;
   background: transparent;
   transition: border-color 0.2s;
@@ -863,6 +863,10 @@ a:hover {
   color: #ffffff;
 }
 
+.hide {
+  display: none;
+}
+
 .flex {
   display: flex;
 }
@@ -907,12 +911,16 @@ a:hover {
   align-items: center;
 }
 
+.mb-40 {
+  margin-bottom: 40px !important;
+}
+
 .dark-link {
-  color: #000000;
+  color: #22272e;
   transition: 0.1s color ease;
 }
 .dark-link:hover {
-  color: #404040;
+  color: #586577;
 }
 
 .pagination {
@@ -926,11 +934,11 @@ a:hover {
   font-weight: bold;
 }
 .pagination li a {
-  color: #000000;
+  color: #22272e;
   transition: 0.1s color ease;
 }
 .pagination li svg {
-  fill: #000000;
+  fill: #22272e;
   transition: 0.1s fill ease;
 }
 .pagination li:hover,
@@ -940,6 +948,25 @@ a:hover {
 .pagination li:hover svg,
 .pagination a:hover svg {
   fill: #656BEA;
+}
+
+.alert {
+  position: fixed;
+  bottom: 1%;
+  right: 1%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height: 60px;
+  width: 300px;
+  color: #434C5E;
+  padding: 5px 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  font-size: 18px;
+}
+.alert-success {
+  background-color: #A3BE8C;
 }
 
 .btn {
@@ -1012,7 +1039,7 @@ a:hover {
 }
 .home-slider-container.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
   margin: 0 6px;
-  background-color: #5b0eeb;
+  background-color: #040405;
   width: 10px;
   height: 10px;
 }
@@ -1220,7 +1247,7 @@ a:hover {
   height: 30px;
   display: flex;
   align-items: center;
-  color: gray;
+  color: #9aa5b5;
   font-size: 16px;
 }
 #view_vacancies .filters {
@@ -1247,7 +1274,7 @@ a:hover {
 }
 .vacancy-author-container .vacancy-post-date {
   font-weight: 300;
-  color: gray;
+  color: #9aa5b5;
 }
 
 .vacancy-info-container {
@@ -1286,7 +1313,7 @@ a:hover {
   width: 100%;
   min-height: 90px;
   max-height: 250px;
-  border: 1px solid #4d4d4d;
+  border: 1px solid #637286;
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 10px;
@@ -1342,7 +1369,7 @@ a:hover {
 }
 .vacancy-comments-container .vacancy-comments-list .vacancy-comment .vacancy-comment-date {
   text-align: right;
-  color: #4d4d4d;
+  color: #637286;
 }
 
 .form-block {
@@ -1351,6 +1378,19 @@ a:hover {
   width: 45%;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   margin-bottom: 35px;
+}
+.form-block .form-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.form-block .form-icon-wrapper svg {
+  height: 100px;
+}
+.form-block .form-title {
+  font-size: 26px;
+  font-weight: normal;
+  margin-bottom: 20px;
 }
 .form-block .form-group {
   padding: 15px 0 0;
@@ -1507,6 +1547,9 @@ a:hover {
   width: 100%;
   justify-content: center;
 }
+.main-banner .banner-logo svg {
+  fill: #656BEA;
+}
 
 .home-search {
   width: 100%;
@@ -1606,7 +1649,7 @@ a:hover {
 .filters .filter-search {
   width: 100%;
   border-radius: 12px;
-  border: 1px solid #000000;
+  border: 1px solid #22272e;
   padding: 5px;
   font-style: italic;
   margin-bottom: 50px;
@@ -1645,4 +1688,101 @@ a:hover {
   align-items: center;
   justify-content: flex-start;
   cursor: pointer;
+}
+
+.tag-input-container {
+  position: relative;
+}
+.tag-input-container .tag-input-wrapper .tag-input-label {
+  color: #9b9b9b;
+  font-size: 1.3rem;
+  margin-bottom: 7px;
+}
+.tag-input-container .tag-input-wrapper .tag-input {
+  display: flex;
+  min-height: 40px;
+  border-bottom: 2px solid #9b9b9b;
+  cursor: text;
+  flex-wrap: wrap;
+}
+.tag-input-container .tag-input-wrapper .tag-input .tag-input-selected-tags {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  flex-wrap: wrap;
+}
+.tag-input-container .tag-input-wrapper .tag-input .tag-input-item {
+  display: flex;
+  align-items: center;
+  margin: 2px;
+  border-radius: 22px;
+  background-color: #4f55e7;
+  padding-right: 0;
+  padding-left: 10px;
+  color: #ffffff;
+  cursor: text;
+  transition: background-color 0.1s ease;
+}
+.tag-input-container .tag-input-wrapper .tag-input .tag-input-item:hover {
+  background-color: #5c62e9;
+}
+.tag-input-container .tag-input-wrapper .tag-input .tag-input-item:hover .tag-input-item-btn {
+  background-color: #696feb;
+}
+.tag-input-container .tag-input-wrapper .tag-input .tag-input-item:hover .tag-input-item-btn:hover {
+  background-color: #777cec;
+}
+.tag-input-container .tag-input-wrapper .tag-input .tag-checkbox {
+  display: none;
+}
+.tag-input-container .tag-input-wrapper .tag-input .tag-input-item-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+  width: 30px;
+  height: 30px;
+  background-color: #6167e9;
+  border-radius: 22px;
+  transition: background-color 0.1s ease;
+  cursor: pointer;
+}
+.tag-input-container .tag-input-wrapper .tag-input .tag-input-field {
+  margin-left: 5px;
+  max-width: 130px;
+  width: 100%;
+  min-height: 38px;
+  font-size: 14px;
+}
+.tag-input-container .tag-input-wrapper .tag-input .suggested-tag-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  list-style: none;
+  background-color: #2E3440;
+  border-radius: 10px;
+  z-index: 1000;
+}
+.tag-input-container .tag-input-wrapper .tag-input .suggested-tag-list .suggested-tag-item {
+  color: #ffffff;
+  font-size: 16px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.tag-input-container .tag-input-wrapper .tag-input .suggested-tag-list .suggested-tag-item:first-of-type {
+  border-radius: 10px 10px 0 0;
+}
+.tag-input-container .tag-input-wrapper .tag-input .suggested-tag-list .suggested-tag-item:last-of-type {
+  border-radius: 0 0 10px 10px;
+}
+.tag-input-container .tag-input-wrapper .tag-input .suggested-tag-list .suggested-tag-item:hover {
+  background-color: #444c56;
+}
+.tag-input-container .tag-input-wrapper .tag-input.focus {
+  border-width: 3px;
+  -o-border-image: linear-gradient(to right, #656BEA, #8A2BE2);
+     border-image: linear-gradient(to right, #656BEA, #8A2BE2);
+  border-image-slice: 1;
 }

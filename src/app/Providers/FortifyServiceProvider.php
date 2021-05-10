@@ -38,6 +38,7 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::loginView(fn () => view('auth.login'));
         Fortify::registerView(fn () => view('auth.register'));
+        Fortify::verifyEmailView(fn () => view('auth.verify-email'));
 
         RateLimiter::for('login', function (Request $request) {
             return Limit::perMinute(5)->by($request->email . $request->ip());
@@ -47,6 +48,8 @@ class FortifyServiceProvider extends ServiceProvider
             \Laravel\Fortify\Contracts\LogoutResponse::class,
             \App\Http\Responses\LogoutResponse::class
         );
+
+
 
         // RateLimiter::for('two-factor', function (Request $request) {
         //     return Limit::perMinute(5)->by($request->session()->get('login.id'));

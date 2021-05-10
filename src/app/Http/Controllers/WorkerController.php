@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Tag;
 use App\Models\User;
 // use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Collection;
@@ -25,7 +26,7 @@ class WorkerController extends Controller
             return $user->hasRole('worker');
         });
         $pagination_users = $this->paginate($users, 10, null, ["path" => "workers/"]);
-        return view("workers.workers", ['users' => $pagination_users]);
+        return view("workers.workers", ['users' => $pagination_users, "tags" => Tag::all()]);
     }
 
     /**
@@ -57,7 +58,7 @@ class WorkerController extends Controller
      */
     public function show(User $user)
     {
-        return view("users.profile", ['user' => $user]);
+        return view("users.profile", ['user' => $user, "tags" => $user->tags]);
     }
 
     /**
@@ -68,7 +69,7 @@ class WorkerController extends Controller
      */
     public function edit(User $user)
     {
-        return $user->can("update", $user) ? view("users.profile-edit", ["user" => $user]) : abort(403);
+        return $user->can("update", $user) ? view("users.profile-edit", ["user" => $user, "tags" => $user->tags]) : abort(403);
     }
 
     /**
@@ -80,7 +81,21 @@ class WorkerController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
+
         $attributes = $request->validated();
+        $tags = [];
+
+        if (isset($attributes["tags"])) {
+            foreach ($attributes["tags"] as $tag) {
+                array_push($tags, Tag::firstOrCreate(["name" => $tag])->id);
+            }
+            $user->tags()->sync($tags);
+        } else {
+            $user->tags()->detach($user->tags->pluck("id"));
+        }
+
+
+
         $user->update($attributes);
         return redirect(route("profile", $user));
     }
