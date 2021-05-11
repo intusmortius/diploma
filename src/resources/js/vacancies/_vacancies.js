@@ -1,6 +1,6 @@
 $( document ).ready(function() {
     $("#vacancy_comment_add_submit").on("click",addComment)
-   
+    $(".filters_category_wrapper").on("click", toggleSearchTag)
 });
 
 function addComment() {
@@ -49,3 +49,17 @@ function addComment() {
     }
 }
 
+
+function toggleSearchTag(e) {
+    const el = $(e.target);
+    const checkbox = el.siblings("input");
+
+    if(checkbox) {
+        el.toggleClass("active");
+        if(checkbox.attr("checked")){
+            checkbox.removeAttr("checked");
+        } else {
+            checkbox.attr("checked", "checked");
+        }
+    }
+}

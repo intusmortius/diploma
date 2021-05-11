@@ -62,11 +62,12 @@
             }
 
             .profile-edit {
-                width: 18px;
-                height: 18px;
+                width: 20px;
+                height: 20px;
                 cursor: pointer;
                 background-image: url("/img/edit.svg");
                 background-size: contain;
+                background-repeat: no-repeat;
                 transition: background-image .1s ease;
 
                 img {

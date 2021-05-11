@@ -10,6 +10,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Queue\Worker;
 use Spatie\Permission\Models\Role;
 
 class WorkerController extends Controller
@@ -116,5 +117,16 @@ class WorkerController extends Controller
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
         $items = $items instanceof Collection ? $items : Collection::make($items);
         return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+    }
+
+    public function search(Request $request)
+    {
+        // if (isset($request->search) && !empty($request->search)) {
+        //     $vacancies = User::where("name", "like", "%{$request->search}%")->orWhere('description', 'LIKE', "%{$request->search}%")->paginate(10);
+
+        //     return view("vacancies.vacancies", ["vacancies" => $vacancies, "tags" => Tag::all()]);
+        // } else {
+        //     return back();
+        // }
     }
 }

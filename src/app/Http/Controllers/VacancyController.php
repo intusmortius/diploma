@@ -96,7 +96,7 @@ class VacancyController extends Controller
      */
     public function edit(Vacancy $vacancy)
     {
-        //
+        return view("vacancies.edit", ["vacancy" => $vacancy, "tags" => $vacancy->tags]);
     }
 
     /**
@@ -106,9 +106,24 @@ class VacancyController extends Controller
      * @param  \App\Models\Vacancy  $vacancy
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Vacancy $vacancy)
+    public function update(CreateVacancyRequest $request, Vacancy $vacancy)
     {
-        //
+        $attributes = $request->validated();
+        $tags = [];
+
+        if (isset($attributes["tags"])) {
+            foreach ($attributes["tags"] as $tag) {
+                array_push($tags, Tag::firstOrCreate(["name" => $tag])->id);
+            }
+            $vacancy->tags()->sync($tags);
+        } else {
+            $vacancy->tags()->detach($vacancy->tags->pluck("id"));
+        }
+
+
+
+        $vacancy->update($attributes);
+        return redirect(route("vacancies-show", $vacancy));
     }
 
     /**
@@ -152,6 +167,39 @@ class VacancyController extends Controller
             } else {
                 return false;
             }
+        }
+    }
+
+    public function search(Request $request)
+    {
+        $tags = [];
+        if (isset($request->tags) && !empty($request->tags)) {
+            $tags = Tag::whereIn("id", [...$request->tags])->get()->pluck("id");
+        }
+
+        if (isset($request->search) && !empty($request->search)) {
+            $vacancies = Vacancy::where("name", "like", "%{$request->search}%")->orWhere('description', 'LIKE', "%{$request->search}%")->paginate(10);
+
+            if (!empty($tags)) {
+                $vacancies = $vacancies->filter(function ($el) use ($tags) {
+                    return $el->tags->contains(function ($tag) use ($tags) {
+                        return in_array($tag->id, [...$tags]);
+                    });
+                });
+                $vacancies = Vacancy::whereIn("id", [...$vacancies])->paginate(10);
+            }
+
+            return view("vacancies.vacancies", ["vacancies" => $vacancies, "tags" => Tag::all()]);
+        } else if (!empty($tags)) {
+            $vacancies = Vacancy::cursor()->filter(function ($vacancy) use ($tags) {
+                return $vacancy->tags->contains(function ($tag) use ($tags) {
+                    return in_array($tag->id, [...$tags]);
+                });;
+            });
+            $vacancies = Vacancy::whereIn("id", [...$vacancies])->paginate(10);
+            return view("vacancies.vacancies", ["vacancies" => $vacancies, "tags" => Tag::all()]);
+        } else {
+            return back();
         }
     }
 }

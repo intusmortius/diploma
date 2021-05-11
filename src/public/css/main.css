@@ -911,6 +911,18 @@ a:hover {
   align-items: center;
 }
 
+.align-center {
+  text-align: center;
+}
+
+.align-left {
+  text-align: center;
+}
+
+.align-rigth {
+  text-align: right;
+}
+
 .mb-40 {
   margin-bottom: 40px !important;
 }
@@ -1097,11 +1109,12 @@ a:hover {
   margin-bottom: 10px;
 }
 #view_workers_profile .profile-info .profile-header .profile-edit {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
   background-image: url("/img/edit.svg");
   background-size: contain;
+  background-repeat: no-repeat;
   transition: background-image 0.1s ease;
 }
 #view_workers_profile .profile-info .profile-header .profile-edit img {
@@ -1254,11 +1267,28 @@ a:hover {
   flex-basis: 25%;
 }
 
+#vacancies_create .form-block,
+#vacancies_edit .form-block {
+  width: 60%;
+}
+
+.vacancy-title-container {
+  display: flex;
+  justify-content: space-between;
+}
 .vacancy-title-container .vacancy-title {
   font-size: 22px;
   padding: 10px 0;
   max-width: 800px;
   overflow: hidden;
+}
+.vacancy-title-container .vacancy-edit {
+  width: 20px;
+  fill: #2E3440;
+}
+.vacancy-title-container .vacancy-edit:hover {
+  width: 20px;
+  fill: #656BEA;
 }
 
 .vacancy-header-container {
@@ -1382,13 +1412,14 @@ a:hover {
 .form-block .form-icon-wrapper {
   display: flex;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  max-height: 80px;
 }
 .form-block .form-icon-wrapper svg {
-  height: 100px;
+  height: 80px;
 }
 .form-block .form-title {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: normal;
   margin-bottom: 20px;
 }
@@ -1673,6 +1704,12 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
 }
+.filters .filters-categories-container .filters-category-wrapper {
+  display: inline;
+}
+.filters .filters-categories-container .filters-category-wrapper .filters-category-checkbox {
+  display: none;
+}
 .filters .filters-categories-container .filters-category {
   margin-right: 10px;
   margin-bottom: 10px;
@@ -1684,6 +1721,9 @@ a:hover {
   display: flex;
   align-items: center;
   cursor: pointer;
+}
+.filters .filters-categories-container .filters-category.active {
+  background-color: #1c24cd;
 }
 
 .tag {

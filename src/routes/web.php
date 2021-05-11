@@ -99,10 +99,15 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
 
 
 
+Route::post('/vacancies/comments', [VacancyController::class, 'addComment']);
+Route::get('/vacancies/search', [VacancyController::class, 'search'])->name('vacancies-search');
+
 Route::middleware(["auth", "verified"])->group(function () {
     Route::middleware(["can:create_vacancy"])->group(function () {
         Route::get('/vacancies/create', [VacancyController::class, 'create'])->name('new-vacancy');
-        Route::post('/vacancies', [VacancyController::class, 'store'])->name('vacancy-store');
+        Route::get('/vacancies/{vacancy}/edit', [VacancyController::class, 'edit'])->name("vacancies-edit");
+        Route::post('/vacancies/{vacancy}', [VacancyController::class, 'update'])->name("vacancies-update");
+        Route::post('/vacancies', [VacancyController::class, 'store'])->name('vacancies-store');
     });
     Route::middleware(["can:update,user"])->group(function () {
         Route::get('/workers/{user}/edit', [WorkerController::class, 'edit'])->name('workers-edit');
@@ -111,10 +116,12 @@ Route::middleware(["auth", "verified"])->group(function () {
     Route::get('/tags/suggested', [TagController::class, "indexSuggested"]);
 });
 
-Route::post('/vacancies/comments', [VacancyController::class, 'addComment']);
-Route::get('/', [HomeController::class, 'home'])->name("home");
-Route::get('/vacancies', [VacancyController::class, 'index'])->name("vacancies");
 Route::get('/vacancies/{vacancy}', [VacancyController::class, 'show'])->name("vacancies-show");
+Route::get('/vacancies', [VacancyController::class, 'index'])->name("vacancies");
+Route::get('/', [HomeController::class, 'home'])->name("home");
+
 Route::get('/workers', [WorkerController::class, 'index'])->name("workers");
 Route::get('/workers/{user}', [WorkerController::class, 'show'])->name('profile');
+
+
 Route::get('paginate', [PaginationController::class, "index"]);

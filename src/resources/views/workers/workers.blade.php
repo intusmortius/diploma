@@ -45,7 +45,10 @@
                 </div>
                 <div class="filters">
                     <h4 class="filters-header">{{ __("Filter") }}</h4>
-                    <input type="text" class="filter-search" placeholder="{{ __("Search") }}">
+                    <form method="GET" action="{{ route("workers-search") }}">
+                        @csrf
+                        <input type="text" class="filter-search" placeholder="{{ __("Search") }}">
+                    </form>
                     <div class="filters-categories">
                         <h4 class="filters-categories-specialization">{{ __("By skills") }}</h4>
                         <div class="filters-categories-container">

@@ -1,14 +1,14 @@
 <x-app>
-    <section id="vacancies_create" class="section">
+    <section id="vacancies_edit" class="section">
         <div class="container">
-            <h2 class="section-header">{{ __("New Vacancy") }}</h2>
+            <h2 class="section-header">{{ __("Edit Vacancy") }}</h2>
             <div class="section-content">
-                <form id="" class="form-block" method="POST" action="{{route("vacancies-store")}}">
+                <form id="" class="form-block" method="POST" action="{{route("vacancies-update", $vacancy)}}">
                     @csrf
 
                     <div class="form-group field">
                         <input type="input" class="form-field" placeholder="{{ __("Vacancy name") }}" name="name"
-                            id='name' required value="{{ old("name") ?? "" }}" />
+                            id='name' required value="{{ old("name") ?? $vacancy->name ?? "" }}" />
                         <label for="name" class="form-label">{{ __("Vacancy name") }}</label>
                     </div>
                     @error('name')
@@ -18,8 +18,8 @@
                     @enderror
                     <div class="form-group field">
                         <textarea id="description" class="form-field form-field-textarea"
-                            placeholder="{{ __("Description") }}" name="description"
-                            value="{{ old("description") ?? "" }}"></textarea>
+                            placeholder="{{ __("Description") }}"
+                            name="description">{{ old("description") ?? $vacancy->description ?? "" }}</textarea>
                         <label for="description" class="form-label">{{ __("Description") }}</label>
                     </div>
                     @error('description')
@@ -29,8 +29,8 @@
                     @enderror
                     <div class="form-group field">
                         <textarea id="about_worker" class="form-field form-field-textarea"
-                            placeholder="{{ __("About worker") }}" name="about_worker"
-                            value="{{ old("about_worker") ?? "" }}"></textarea>
+                            placeholder="{{ __("About worker") }}"
+                            name="about_worker">{{ old("about_worker") ?? $vacancy->about_worker ?? "" }}</textarea>
                         <label for="about_worker" class="form-label">{{ __("About worker") }}</label>
                     </div>
                     @error('about_worker')
@@ -40,8 +40,8 @@
                     @enderror
                     <div class="form-group field">
                         <textarea id="responsibilities	" class="form-field form-field-textarea"
-                            placeholder="{{ __("Responsibilities") }}" name="responsibilities"
-                            value="{{ old("responsibilities	") ?? "" }}"></textarea>
+                            placeholder="{{ __("Responsibilities") }}"
+                            name="responsibilities">{{ old("responsibilities	") ?? $vacancy->responsibilities ?? "" }}</textarea>
                         <label for="responsibilities	" class="form-label">{{ __("Responsibilities") }}</label>
                     </div>
                     @error('responsibilities')
@@ -51,8 +51,8 @@
                     @enderror
                     <div class="form-group field">
                         <textarea id="requirements" class="form-field form-field-textarea"
-                            placeholder="{{ __("Requirements") }}" name="requirements"
-                            value="{{ old("requirements") ?? "" }}"></textarea>
+                            placeholder="{{ __("Requirements") }}"
+                            name="requirements">{{ old("requirements") ?? $vacancy->requirements ?? "" }}</textarea>
                         <label for="requirements" class="form-label">{{ __("Requirements") }}</label>
                     </div>
                     @error('requirements')
@@ -60,6 +60,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
+                    @isset($tags)
                     <div class="form-group field mb-40">
                         <div class="tag-input-container">
                             <div class="tag-input-wrapper">
@@ -68,7 +69,6 @@
                                 </div>
                                 <div id="tag_input_wrapper" class="tag-input">
                                     <ul id="tag_container" class="tag-input-selected-tags">
-                                        @isset($tags)
                                         @foreach ($tags as $tag)
                                         <li class="tag-input-item tag_input_item">
                                             <input type="checkbox" name="tags[]" value="{{ $tag->name }}"
@@ -86,7 +86,6 @@
                                             </button>
                                         </li>
                                         @endforeach
-                                        @endisset
                                     </ul>
                                     <input id="tag_input_field" type="text" class="tag-input-field" autocomplete="off">
                                     <ul id="suggested_tag_list" class="suggested-tag-list hide">
@@ -95,6 +94,7 @@
                             </div>
                         </div>
                     </div>
+                    @endisset
                     <div class="form-submit"><button class="btn flare-effect">{{ __("Create") }}</button></div>
                 </form>
             </div>
