@@ -304,6 +304,14 @@
         display: flex;
         flex-wrap: wrap;
 
+        .filters-category-wrapper {
+            display: inline;
+
+            .filters-category-checkbox {
+                display: none;
+            }
+        }
+
         .filters-category {
             margin-right: 10px;
             margin-bottom: 10px;
@@ -315,6 +323,10 @@
             display: flex;
             align-items: center;
             cursor: pointer;
+        }
+
+        .filters-category.active {
+            background-color: darken($primary, 20%);
         }
     }
 }

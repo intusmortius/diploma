@@ -53,15 +53,35 @@
 
 }
 
+#vacancies_create,
+#vacancies_edit {
+    .form-block {
+        width: 60%;
+    }
+}
+
 
 // Vacancies Show
 
 .vacancy-title-container {
+    display: flex;
+    justify-content: space-between;
+
     .vacancy-title {
         font-size: 22px;
         padding: 10px 0;
         max-width: 800px;
         overflow: hidden;
+    }
+
+    .vacancy-edit {
+        width: 20px;
+        fill: $dark-grey-2;
+    }
+
+    .vacancy-edit:hover {
+        width: 20px;
+        fill: $primary;
     }
 }
 
@@ -73,11 +93,14 @@
 
 .vacancy-author-container {
 
+
     .vacancy-author-name {
         color: $primary;
         margin-bottom: 5px;
         opacity: 0.8;
     }
+
+
 
     .vacancy-post-date {
         font-weight: 300;

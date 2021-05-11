@@ -8,16 +8,17 @@
     .form-icon-wrapper {
         display: flex;
         justify-content: center;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
+        max-height: 80px;
 
         svg {
-            height: 100px;
+            height: 80px;
         }
     }
 
     .form-title {
         // text-align: center;
-        font-size: 26px;
+        font-size: 22px;
         font-weight: normal;
         margin-bottom: 20px;
     }

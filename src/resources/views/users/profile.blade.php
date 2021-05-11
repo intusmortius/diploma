@@ -20,15 +20,25 @@
                         </a>
                         @endcan
                     </div>
+                    @isset($user->worker_specialization)
                     <span class="profile-subinfo">{{__("Specialization")}}: {{$user->worker_specialization}}</span>
+                    @endisset
+                    @isset($user->worker_group)
                     <span class="profile-subinfo">{{__("Group")}}: {{$user->worker_group}}</span>
+                    @endisset
+                    @isset($user->worker_cathedra)
                     <span class="profile-subinfo">{{__("Cathedra")}}: {{$user->worker_cathedra}}</span>
+                    @endisset
+                    @isset($user->worker_faculty)
                     <span class="profile-subinfo">{{__("Faculty")}}: {{$user->worker_faculty}}</span>
+                    @endisset
+                    @isset($user->about)
                     <span class="profile-subinfo">{{__("About")}}:</span>
                     <p class="profile-about">
                         {{$user->about}}
                     </p>
-                    @isset($tags)
+                    @endisset
+                    @if (!$tags->isEmpty())
                     <span class="profile-subinfo">{{__("Skills")}}:</span>
                     <div class="filters">
                         <div class="filters-categories-container">
@@ -37,7 +47,7 @@
                             @endforeach
                         </div>
                     </div>
-                    @endisset
+                    @endif
                 </div>
             </div>
         </div>

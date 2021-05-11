@@ -16,6 +16,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
+                    @if ($user->hasRole("worker"))
                     <div class="form-group field">
                         <input type="input" class="form-field" placeholder="{{ __("Group") }}" name="worker_group"
                             id='worker_group' value="{{ old("worker_group") ?? $user->worker_group ?? "" }}" />
@@ -26,6 +27,8 @@
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
+                    @endif
+                    @if ($user->hasRole("worker"))
                     <div class="form-group field">
                         <input type="input" class="form-field" placeholder="{{ __("Cathedra") }}" name="worker_cathedra"
                             id='worker_cathedra' value="{{ old("worker_cathedra") ?? $user->worker_cathedra ?? "" }}" />
@@ -36,6 +39,8 @@
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
+                    @endif
+                    @if ($user->hasRole("worker"))
                     <div class="form-group field">
                         <input type="input" class="form-field" placeholder="{{ __("Faculty") }}" name="worker_faculty"
                             id='worker_faculty' value="{{ old("worker_faculty") ?? $user->worker_faculty ?? "" }}" />
@@ -46,6 +51,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
+                    @endif
                     <div class="form-group field">
                         <div class="tag-input-container">
                             <div class="tag-input-wrapper">
