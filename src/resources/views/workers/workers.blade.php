@@ -53,7 +53,11 @@
                         <h4 class="filters-categories-specialization">{{ __("By skills") }}</h4>
                         <div class="filters-categories-container">
                             @forelse ($tags as $tag)
-                            <span class="filters-category">{{ $tag->name }}</span>
+                            <div class="filters-category-wrapper filters_category_wrapper">
+                                <input class="filters-category-checkbox" name="tags[]" type="checkbox"
+                                    value="{{ $tag->id }}">
+                                <span class="filters-category">{{ $tag->name }}</span>
+                            </div>
                             @empty
                             <div class="empty-container">{{__("No tags yet")}}</div>
                             @endforelse
