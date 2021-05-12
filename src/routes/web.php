@@ -101,6 +101,7 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
 
 Route::post('/vacancies/comments', [VacancyController::class, 'addComment']);
 Route::get('/vacancies/search', [VacancyController::class, 'search'])->name('vacancies-search');
+Route::get('/workers/search', [WorkerController::class, 'search'])->name('workers-search');
 
 Route::middleware(["auth", "verified"])->group(function () {
     Route::middleware(["can:create_vacancy"])->group(function () {
