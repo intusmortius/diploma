@@ -126,3 +126,8 @@ Route::get('/workers/{user}', [WorkerController::class, 'show'])->name('profile'
 
 
 Route::get('paginate', [PaginationController::class, "index"]);
+
+
+Route::get('api/users', 'Api\V1\UsersController@index');
+Route::post('api/messages', 'Api\V1\MessagesController@index');
+Route::post('api/messages/send', 'Api\V1\MessagesController@store');
