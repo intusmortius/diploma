@@ -47,6 +47,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    protected $appends = ['resource_url'];
+
     public function vacancy()
     {
         return $this->hasOne(Vacancy::class, "author_id");
@@ -57,7 +59,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Tag::class);
     }
 
-    protected $appends = ['resource_url'];
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'receiver_id');
+    }
 
     /* ************************ ACCESSOR ************************* */
 

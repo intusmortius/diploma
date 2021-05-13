@@ -8,6 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @auth
+    <meta name="userID" content="{{ auth()->user()->id }}">
+    @endauth
+
     <title>{{ config('app.name', 'Diploma') }}</title>
 
     <!-- Styles -->
@@ -53,7 +57,7 @@
         </div>
     </header>
 
-    <main class="main">
+    <main id="app" class="main">
         {{$slot}}
     </main>
     <footer class="footer">
