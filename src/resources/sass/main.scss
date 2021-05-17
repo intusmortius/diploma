@@ -6,6 +6,7 @@
 @import "../sass/sliders";
 @import "../sass/workers/workers";
 @import "../sass/vacancies/vacancies";
+@import "../sass/chat/chat";
 @import "../sass/auth/auth";
 
 
@@ -138,6 +139,7 @@
     // flex-direction: column;
     max-width: 1200px;
     margin: auto;
+    height: 100%;
 }
 
 .main-banner {

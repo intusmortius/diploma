@@ -22,7 +22,11 @@
     },
     "dependencies": {
         "alpinejs": "^2.8.2",
+        "laravel-echo": "^1.10.0",
         "pusher-js": "^7.0.3",
+        "simplebar": "^5.3.3",
+        "socket.io": "^4.1.1",
+        "socket.io-client": "^4.1.1",
         "swiper": "^6.5.3",
         "vue": "^2.6.12"
     }

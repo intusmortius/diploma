@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\V1\MessagesController;
+use App\Http\Controllers\Api\V1\SendersController;
+use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaginationController;
@@ -115,6 +118,13 @@ Route::middleware(["auth", "verified"])->group(function () {
         Route::post('/workers/{user}', [WorkerController::class, 'update'])->name('workers-update');
     });
     Route::get('/tags/suggested', [TagController::class, "indexSuggested"]);
+    Route::get('/chat', [ChatController::class, 'index'])->name("chat");
+    Route::post('/chat/delete', [ChatController::class, 'delete'])->name("chat-delete");
+    Route::post('/chat/{user}', [ChatController::class, 'chatWith'])->name("chat-with");
+
+    Route::get('api/users', [SendersController::class, 'index']);
+    Route::post('api/messages', [MessagesController::class, 'index']);
+    Route::post('/api/messages/send', [MessagesController::class, 'store']);
 });
 
 Route::get('/vacancies/{vacancy}', [VacancyController::class, 'show'])->name("vacancies-show");
@@ -126,8 +136,3 @@ Route::get('/workers/{user}', [WorkerController::class, 'show'])->name('profile'
 
 
 Route::get('paginate', [PaginationController::class, "index"]);
-
-
-Route::get('api/users', 'Api\V1\UsersController@index');
-Route::post('api/messages', 'Api\V1\MessagesController@index');
-Route::post('api/messages/send', 'Api\V1\MessagesController@store');

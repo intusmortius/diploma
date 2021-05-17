@@ -17,13 +17,15 @@
     <!-- Styles -->
 
     {{-- Bootstap --}}
-    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="{{ asset('/css/main.css') }}" rel="stylesheet">
 
 </head>
 
 <body>
+    <x-modals.modal-delete-chat>
+    </x-modals.modal-delete-chat>
     <header class="header">
         <div class="container">
             <div class="header-container">
@@ -36,6 +38,9 @@
                     @can('create_vacancy')
                     <div class="header-nav-item"><a href="{{route("new-vacancy")}}">{{__('New Vacancy')}}</a></div>
                     @endcan
+                    @auth
+                    <div class="header-nav-item"><a href="{{route("chat")}}">{{__('Chat')}}</a></div>
+                    @endauth
                 </div>
                 <div class="header-nav">
                     @guest
@@ -57,7 +62,7 @@
         </div>
     </header>
 
-    <main id="app" class="main">
+    <main class="main">
         {{$slot}}
     </main>
     <footer class="footer">

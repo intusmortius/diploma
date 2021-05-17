@@ -11,6 +11,7 @@ class SendersController extends Controller
     public function index()
 
     {
-        return User::orderBy('name')->where('id', '!=', auth()->user()->id)->get();
+        // return User::orderBy('name')->where('id', '!=', auth()->user()->id)->get();
+        return auth()->user()->chatable;
     }
 }
