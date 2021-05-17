@@ -35,7 +35,11 @@
                         </div>
                         @can('contact_with_worker')
                         <div class="workers-contact">
-                            <button id="{{$user->id}}" class="btn flare-effect">{{ __("Contact") }}</button>
+                            <form method="post" action="{{ route("chat-with", $user) }}">
+                                @csrf
+                                <button type="submit" id="{{$user->id}}"
+                                    class="btn flare-effect">{{ __("Contact") }}</button>
+                            </form>
                         </div>
                         @endcan
                     </div>

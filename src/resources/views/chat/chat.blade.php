@@ -1,9 +1,7 @@
 <x-app>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <chat-application></chat-application>
-            </div>
+    <section id="view_chat" class="section">
+        <div class="container">
+            <chat-application></chat-application>
         </div>
-    </div>
+    </section>
 </x-app>

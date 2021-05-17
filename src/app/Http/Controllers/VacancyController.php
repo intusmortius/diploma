@@ -186,7 +186,9 @@ class VacancyController extends Controller
                         return in_array($tag->id, [...$tags]);
                     });
                 });
-                $vacancies = Vacancy::whereIn("id", [...$vacancies])->paginate(10);
+                
+                $vacancies = Vacancy::whereIn("id", [...$vacancies->pluck("id")])->paginate(10);
+                // dd($vacancies);
             }
 
             return view("vacancies.vacancies", ["vacancies" => $vacancies, "tags" => Tag::all()]);

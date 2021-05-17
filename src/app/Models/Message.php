@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -35,5 +36,12 @@ class Message extends Model
     public function receiver()
     {
         return $this->belongsTo(User::class, 'receiver_id')->select(['id', 'name']);
+    }
+
+    public function getCreatedAtAttribute($date)
+    {
+        $newDate = new DateTime($date);
+        $customformat = $newDate->format('M d H:i');
+        return $customformat;
     }
 }

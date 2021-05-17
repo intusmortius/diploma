@@ -53,5 +53,10 @@
     "Skills and Expertise": "Навички та досвід",
     "Rate": "Ставка",
     "Add comment": "Додати коментар",
-    "No comments yet": "Поки коментарів немає"
+    "No comments yet": "Поки коментарів немає",
+    "Chat": "Чат",
+    "Are you sure you want to delete this chat ?": "Ви впевнені, що хочете видалити цей чат?",
+    "Chat deletion": "Видалення чату",
+    "Delete": "Видалити",
+    "Close": "Закрити"
 }
