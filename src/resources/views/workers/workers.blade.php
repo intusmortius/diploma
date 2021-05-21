@@ -48,25 +48,27 @@
                     @endempty
                 </div>
                 <div class="filters">
-                    <h4 class="filters-header">{{ __("Filter") }}</h4>
+
                     <form method="GET" action="{{ route("workers-search") }}">
                         @csrf
-                        <input type="text" class="filter-search" placeholder="{{ __("Search") }}">
-                    </form>
-                    <div class="filters-categories">
-                        <h4 class="filters-categories-specialization">{{ __("By skills") }}</h4>
-                        <div class="filters-categories-container">
-                            @forelse ($tags as $tag)
-                            <div class="filters-category-wrapper filters_category_wrapper">
-                                <input class="filters-category-checkbox" name="tags[]" type="checkbox"
-                                    value="{{ $tag->id }}">
-                                <span class="filters-category">{{ $tag->name }}</span>
+                        <h4 class="filters-header">{{ __("Filter") }}</h4>
+                        <input name="search" type="text" class="filter-search" placeholder="{{ __("Search") }}">
+
+                        <div class="filters-categories">
+                            <h4 class="filters-categories-specialization">{{ __("By skills") }}</h4>
+                            <div class="filters-categories-container">
+                                @forelse ($tags as $tag)
+                                <div class="filters-category-wrapper filters_category_wrapper">
+                                    <input class="filters-category-checkbox" name="tags[]" type="checkbox"
+                                        value="{{ $tag->id }}">
+                                    <span class="filters-category">{{ $tag->name }}</span>
+                                </div>
+                                @empty
+                                <div class="empty-container">{{__("No tags yet")}}</div>
+                                @endforelse
                             </div>
-                            @empty
-                            <div class="empty-container">{{__("No tags yet")}}</div>
-                            @endforelse
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

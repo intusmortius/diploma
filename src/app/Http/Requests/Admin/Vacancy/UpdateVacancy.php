@@ -26,7 +26,7 @@ class UpdateVacancy extends FormRequest
     public function rules(): array
     {
         return [
-            'author_id' => ['sometimes', 'string'],
+            'author_id' => ['sometimes',"int"],
             'name' => ['sometimes', 'string'],
             'description' => ['sometimes', 'string'],
             'about_worker' => ['nullable', 'string'],

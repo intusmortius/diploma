@@ -6,7 +6,7 @@
                 <div class="vacancy-header-container">
                     <div class="vacancy-title-container">
                         <h3 class="vacancy-title">{{ $vacancy->name }}</h3>
-                        {{-- @can('update', $vacancy) --}}
+                        @can('update', $vacancy)
                         <a href="{{ route("vacancies-edit", $vacancy) }}">
                             <div class="vacancy-edit">
                                 <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="edit"
@@ -18,7 +18,7 @@
                                 </svg>
                             </div>
                         </a>
-                        {{-- @endcan --}}
+                        @endcan
                     </div>
                     <div class="vacancy-author-container">
                         <h4 class="vacancy-author-name">{{ $vacancy->author->name }}</h4>
@@ -82,7 +82,13 @@
                                 </div>
                                 <div class="vacancy-comment-right">
                                     <div class="vacancy-worker-name">{{ $comment->author->name }}</div>
-                                    <button class="btn flare-effect">{{ __("Contact") }}</button>
+                                    @can('contact_with_worker')
+                                    <form method="post" action="{{ route("chat-with", $comment->author) }}">
+                                        @csrf
+                                        <button id="{{$comment->author->id}}"
+                                            class="btn flare-effect">{{ __("Contact") }}</button>
+                                    </form>
+                                    @endcan
                                 </div>
                             </div>
                             <div class="vacancy-comment-text">
