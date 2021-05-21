@@ -174,31 +174,40 @@ class VacancyController extends Controller
     {
         $tags = [];
         if (isset($request->tags) && !empty($request->tags)) {
-            $tags = Tag::whereIn("id", [...$request->tags])->get()->pluck("id");
+            $tags = Tag::whereIn("id", [...$request->tags])->get();
         }
 
         if (isset($request->search) && !empty($request->search)) {
-            $vacancies = Vacancy::where("name", "like", "%{$request->search}%")->orWhere('description', 'LIKE', "%{$request->search}%")->paginate(10);
-
+            $vacancies = Vacancy::where("name", "like", "%{$request->search}%")->orWhere('description', 'LIKE', "%{$request->search}%")->paginate(5);
             if (!empty($tags)) {
                 $vacancies = $vacancies->filter(function ($el) use ($tags) {
-                    return $el->tags->contains(function ($tag) use ($tags) {
-                        return in_array($tag->id, [...$tags]);
-                    });
+                    foreach([...$tags->pluck("id")] as $tag){
+                        if($el->tags->pluck("id")->contains($tag)) {
+                            return true;
+                        }
+                    }
+                    return false;
                 });
-                
-                $vacancies = Vacancy::whereIn("id", [...$vacancies->pluck("id")])->paginate(10);
-                // dd($vacancies);
+                $vacancies = Vacancy::whereIn("id", [...$vacancies->pluck("id")])->paginate(5);
+                $vacancies->withPath("/vacancies/search?_token=" . $request->_token . "&search=" . $request->search. "&_token=" . $request->_token);
             }
-
+            $vacancies->withPath("/vacancies/search?_token=" . $request->_token . "&search=" . $request->search. "&_token=" . $request->_token);
             return view("vacancies.vacancies", ["vacancies" => $vacancies, "tags" => Tag::all()]);
         } else if (!empty($tags)) {
-            $vacancies = Vacancy::cursor()->filter(function ($vacancy) use ($tags) {
-                return $vacancy->tags->contains(function ($tag) use ($tags) {
-                    return in_array($tag->id, [...$tags]);
-                });;
+            $vacancies = Vacancy::all();
+
+            $vacancies = $vacancies->filter(function ($el) use ($tags) {
+                foreach([...$tags->pluck("id")] as $tag){
+                    if($el->tags->pluck("id")->contains($tag)) {
+                        return true;
+                    }
+                }
+                return false;
             });
-            $vacancies = Vacancy::whereIn("id", [...$vacancies])->paginate(10);
+
+            $vacancies = Vacancy::whereIn("id", [...$vacancies->pluck("id")])->paginate(10);
+            $vacancies->withPath("/vacancies/search?_token=" . $request->_token . "&search=" . $request->search. "&_token=" . $request->_token);
+            
             return view("vacancies.vacancies", ["vacancies" => $vacancies, "tags" => Tag::all()]);
         } else {
             return back();

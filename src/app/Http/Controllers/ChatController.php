@@ -17,6 +17,7 @@ class ChatController extends Controller
     {
         $authUser = auth()->user();
         $authUser->chatable()->sync($user, false);
+        $user->chatable()->sync($authUser, false);
         return redirect(route("chat"));
     }
 
@@ -26,6 +27,7 @@ class ChatController extends Controller
             $user = User::find($request->id);
             if(isset($user)){
                 auth()->user()->chatable()->detach($user);
+                $user->chatable()->detach($user);
 
                 return Response::json(auth()->user()->chatable);
             } else {

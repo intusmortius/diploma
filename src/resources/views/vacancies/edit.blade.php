@@ -95,7 +95,7 @@
                         </div>
                     </div>
                     @endisset
-                    <div class="form-submit"><button class="btn flare-effect">{{ __("Create") }}</button></div>
+                    <div class="form-submit"><button class="btn flare-effect">{{ __("Edit") }}</button></div>
                 </form>
             </div>
         </div>

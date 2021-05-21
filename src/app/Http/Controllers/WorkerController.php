@@ -121,12 +121,64 @@ class WorkerController extends Controller
 
     public function search(Request $request)
     {
-        // if (isset($request->search) && !empty($request->search)) {
-        //     $vacancies = User::where("name", "like", "%{$request->search}%")->orWhere('description', 'LIKE', "%{$request->search}%")->paginate(10);
+        // dd($request);
+        $tags = [];
+        if (isset($request->tags) && !empty($request->tags)) {
+            $tags = Tag::whereIn("id", [...$request->tags])->get();
+        }
+        
 
-        //     return view("vacancies.vacancies", ["vacancies" => $vacancies, "tags" => Tag::all()]);
-        // } else {
-        //     return back();
-        // }
+        if (isset($request->search) && !empty($request->search)) {
+            
+            $all_users = User::with("roles")->get();
+            $users = $all_users->filter(function ($user) {
+                return $user->hasRole('worker');
+            });
+            $search = $request->search;
+
+            $users = $users->filter(function($el) use($search){
+                return false !== stripos($el->name, $search);
+            });
+            // $users = $users->filter(function($el) use ($users, $request) {
+            //     dd($users->pluck("name"));
+            //     return $users->contains("name", $request->search);
+            // });
+            // dd($users);
+            $users = $this->paginate($users, 10, null, ["path" => "/workers/search?_token=" . $request->_token . "&search=" . $request->search. "&_token=" . $request->_token]);
+
+            if (!empty($tags)) {
+                $users = $users->filter(function ($el) use ($tags) {
+                    foreach([...$tags->pluck("id")] as $tag){
+                        if($el->tags->pluck("id")->contains($tag)) {
+                            return true;
+                        }
+                    }
+                    return false;
+                });
+                $users = User::whereIn("id", [...$users->pluck("id")])->paginate(5);
+                $users->withPath("/workers/search?_token=" . $request->_token . "&search=" . $request->search. "&_token=" . $request->_token);
+            }
+            
+            // $users->withPath("/workers/search?_token=" . $request->_token . "&search=" . $request->search. "&_token=" . $request->_token);
+            return view("workers.workers", ["users" => $users, "tags" => Tag::all()]);
+        } else if (!empty($tags)) {
+            $all_users = User::with("roles")->get();
+            $users = $all_users->filter(function ($user) {
+                return $user->hasRole('worker');
+            });
+            $users = $users->filter(function ($el) use ($tags) {
+                foreach([...$tags->pluck("id")] as $tag){
+                    if($el->tags->pluck("id")->contains($tag)) {
+                        return true;
+                    }
+                }
+                return false;
+            });
+            $users = User::whereIn("id", [...$users->pluck("id")])->paginate(5);
+            $users->withPath("/workers/search?_token=" . $request->_token . "&search=" . $request->search. "&_token=" . $request->_token);
+            return view("workers.workers", ["users" => $users, "tags" => Tag::all()]);
+        }else {
+            return back();
+        }
     }
 }
