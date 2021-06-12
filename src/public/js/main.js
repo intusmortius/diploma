@@ -3887,6 +3887,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     openChat: function openChat(userID) {
       var app = this;
+      var el = $("#chat_no_room");
 
       if (app.chatUserID !== userID) {
         app.chatOpen = true;
@@ -3906,6 +3907,9 @@ __webpack_require__.r(__webpack_exports__);
         }); // End pusher listener
 
         app.loadMessages();
+        el.hide();
+      } else {
+        el.show();
       }
     },
     loadUsers: function loadUsers() {
@@ -4325,6 +4329,8 @@ if (document.head.querySelector('meta[name="userID"]') && document.querySelector
 $(document).ready(function () {
   $("#vacancy_comment_add_submit").on("click", addComment);
   $(".filters_category_wrapper").on("click", toggleSearchTag);
+  $("#vacancy_show_closure").on("click", addVacancyCloseId);
+  $("#vacancy_delete_btn").on("click", deleteVacancy);
 });
 
 function addComment() {
@@ -4371,6 +4377,41 @@ function toggleSearchTag(e) {
     } else {
       checkbox.attr("checked", "checked");
     }
+  }
+}
+
+function addVacancyCloseId() {
+  var triggerEl = $("#vacancy_show_closure");
+  var deleteEl = $("#vacancy_delete_btn");
+  var id = triggerEl.attr("data-vacancy-id");
+
+  if (id) {
+    deleteEl.attr("data-vacancy-id", id);
+  }
+}
+
+function deleteVacancy(e) {
+  var el = e.target;
+
+  if (el) {
+    var id = el.getAttribute("data-vacancy-id");
+    $.ajax({
+      type: "POST",
+      url: "/vacancies/delete",
+      data: {
+        _token: $("meta[name='csrf-token']").attr("content"),
+        id: id
+      },
+      dataType: 'json',
+      success: function success(response) {
+        if (response) {
+          window.location.href = "/vacancies/my-vacancies";
+        }
+      },
+      error: function error(response) {
+        console.log(response);
+      }
+    });
   }
 }
 

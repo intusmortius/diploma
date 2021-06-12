@@ -83,6 +83,8 @@
         methods: {
             openChat(userID) {
                 let app = this;
+                const el = $("#chat_no_room");
+                
                 if (app.chatUserID !== userID) {
                     app.chatOpen = true;
                     app.chatUserID = userID;
@@ -106,6 +108,10 @@
                     });
                     // End pusher listener
                     app.loadMessages();
+
+                    el.hide();
+                } else {
+                    el.show();
                 }
             },
             loadUsers() {

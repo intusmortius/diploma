@@ -26,6 +26,8 @@
 <body>
     <x-modals.modal-delete-chat>
     </x-modals.modal-delete-chat>
+    <x-modals.modal-delete-vacancy>
+    </x-modals.modal-delete-vacancy>
     <header class="header">
         <div class="container">
             <div class="header-container">
@@ -37,6 +39,7 @@
                     <div class="header-nav-item"><a href="{{route("vacancies")}}">{{__('Vacancies')}}</a></div>
                     @can('create_vacancy')
                     <div class="header-nav-item"><a href="{{route("new-vacancy")}}">{{__('New Vacancy')}}</a></div>
+                    <div class="header-nav-item"><a href="{{route("my-vacancy")}}">{{__('My vacancies')}}</a></div>
                     @endcan
                     @auth
                     <div class="header-nav-item"><a href="{{route("chat")}}">{{__('Chat')}}</a></div>
