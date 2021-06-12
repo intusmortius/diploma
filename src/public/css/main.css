@@ -1301,13 +1301,20 @@ a:hover {
   max-width: 800px;
   overflow: hidden;
 }
-.vacancy-title-container .vacancy-edit {
+.vacancy-title-container .vacancy-settings {
+  display: flex;
+}
+.vacancy-title-container .vacancy-settings .vacancy-setting {
   width: 20px;
   fill: #2E3440;
+  color: #2E3440;
+  margin-left: 10px;
+  cursor: pointer;
 }
-.vacancy-title-container .vacancy-edit:hover {
+.vacancy-title-container .vacancy-setting:hover {
   width: 20px;
   fill: #656BEA;
+  color: #656BEA;
 }
 
 .vacancy-header-container {

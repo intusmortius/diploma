@@ -109,7 +109,9 @@ Route::get('/workers/search', [WorkerController::class, 'search'])->name('worker
 Route::middleware(["auth", "verified"])->group(function () {
     Route::middleware(["can:create_vacancy"])->group(function () {
         Route::get('/vacancies/create', [VacancyController::class, 'create'])->name('new-vacancy');
+        Route::get('/vacancies/my-vacancies', [VacancyController::class, 'myVacancies'])->name('my-vacancy');
         Route::get('/vacancies/{vacancy}/edit', [VacancyController::class, 'edit'])->name("vacancies-edit");
+        Route::post('/vacancies/delete', [VacancyController::class, 'destroy'])->name("vacancies-delete");
         Route::post('/vacancies/{vacancy}', [VacancyController::class, 'update'])->name("vacancies-update");
         Route::post('/vacancies', [VacancyController::class, 'store'])->name('vacancies-store');
     });

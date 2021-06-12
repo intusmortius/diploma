@@ -1,6 +1,8 @@
 $( document ).ready(function() {
     $("#vacancy_comment_add_submit").on("click",addComment)
     $(".filters_category_wrapper").on("click", toggleSearchTag)
+    $("#vacancy_show_closure").on("click", addVacancyCloseId)
+    $("#vacancy_delete_btn").on("click", deleteVacancy)
 });
 
 function addComment() {
@@ -61,5 +63,41 @@ function toggleSearchTag(e) {
         } else {
             checkbox.attr("checked", "checked");
         }
+    }
+}
+
+function addVacancyCloseId() {
+    const triggerEl = $("#vacancy_show_closure");
+    const deleteEl = $("#vacancy_delete_btn");
+    const id = triggerEl.attr("data-vacancy-id");
+    if(id){
+        deleteEl.attr("data-vacancy-id", id)
+    }
+}
+
+
+function deleteVacancy(e) {
+    const el = e.target;
+
+    if(el){
+        const id = el.getAttribute("data-vacancy-id");
+
+        $.ajax({
+            type:"POST",
+            url: `/vacancies/delete`,
+            data: {
+                _token: $("meta[name='csrf-token']").attr("content"),
+                id: id,
+            },
+            dataType:'json',
+            success:function(response){
+                if(response){
+                    window.location.href = "/vacancies/my-vacancies";
+                } 
+            },
+            error:function(response){
+                console.log(response)
+            },
+        })
     }
 }

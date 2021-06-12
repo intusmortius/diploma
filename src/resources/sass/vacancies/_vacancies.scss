@@ -74,14 +74,23 @@
         overflow: hidden;
     }
 
-    .vacancy-edit {
-        width: 20px;
-        fill: $dark-grey-2;
+    .vacancy-settings {
+        display: flex;
+
+        .vacancy-setting {
+            width: 20px;
+            fill: $dark-grey-2;
+            color: $dark-grey-2;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
     }
 
-    .vacancy-edit:hover {
+    .vacancy-setting:hover {
         width: 20px;
         fill: $primary;
+        color: $primary;
     }
 }
 

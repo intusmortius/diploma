@@ -33,6 +33,12 @@ class VacancyController extends Controller
         return view("vacancies.create");
     }
 
+    public function myVacancies()
+    {
+        $vacancies = Vacancy::whereIn("id", auth()->user()->vacancies->pluck("id"))->latest()->paginate(10);
+        return view("vacancies.customer-vacancies", ["vacancies" => $vacancies]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -132,9 +138,13 @@ class VacancyController extends Controller
      * @param  \App\Models\Vacancy  $vacancy
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Vacancy $vacancy)
+    public function destroy(Request $request)
     {
-        //
+        if(isset($request)){
+            $vacancy = Vacancy::where("id", $request->id);
+            $vacancy->delete();
+            return Response::json("success");
+        }
     }
 
     public function addComment(Request $request)

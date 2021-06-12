@@ -53,12 +53,17 @@
     "Skills and Expertise": "Навички та досвід",
     "Rate": "Ставка",
     "Add comment": "Додати коментар",
-    "No comments yet": "Поки коментарів немає",
+    "No comments yet": "Поки ставок немає",
     "Chat": "Чат",
     "Are you sure you want to delete this chat ?": "Ви впевнені, що хочете видалити цей чат?",
+    "Are you sure you want to close this vacancy ?": "Ви впевнені, що хочете закрити цю вакансію?",
     "Chat deletion": "Видалення чату",
+    "Vacancy closure": "Закриття вакансії",
     "Delete": "Видалити",
     "Close": "Закрити",
+    "Confirm": "Підтвердити",
+    "Cancel": "Скасувати",
     "Last registered workers": "Останні зареєстровані працівники",
-    "All workers": "Всі робітники"
+    "All workers": "Всі робітники",
+    "My vacancies": "Мої вакансії"
 }
