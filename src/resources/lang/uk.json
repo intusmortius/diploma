@@ -65,5 +65,9 @@
     "Cancel": "Скасувати",
     "Last registered workers": "Останні зареєстровані працівники",
     "All workers": "Всі робітники",
-    "My vacancies": "Мої вакансії"
+    "My vacancies": "Мої вакансії",
+    "Feedback": "Зворотній зв'язок",
+    "Please enter the message you would like to be send:": "Введіть повідомлення, яке ви хочете надіслати:",
+    "Message" : "Повідомлення",
+    "Send": "Надіслати"
 }

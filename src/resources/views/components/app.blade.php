@@ -37,12 +37,13 @@
                     </div>
                     <div class="header-nav-item"><a href="{{route("workers")}}">{{__('Workers')}}</a></div>
                     <div class="header-nav-item"><a href="{{route("vacancies")}}">{{__('Vacancies')}}</a></div>
+                    @auth
                     @can('create_vacancy')
                     <div class="header-nav-item"><a href="{{route("new-vacancy")}}">{{__('New Vacancy')}}</a></div>
                     <div class="header-nav-item"><a href="{{route("my-vacancy")}}">{{__('My vacancies')}}</a></div>
                     @endcan
-                    @auth
                     <div class="header-nav-item"><a href="{{route("chat")}}">{{__('Chat')}}</a></div>
+                    <div class="header-nav-item"><a href="{{route("feedback")}}">{{__('Feedback')}}</a></div>
                     @endauth
                 </div>
                 <div class="header-nav">

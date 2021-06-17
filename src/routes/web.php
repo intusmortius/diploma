@@ -136,5 +136,7 @@ Route::get('/', [HomeController::class, 'home'])->name("home");
 Route::get('/workers', [WorkerController::class, 'index'])->name("workers");
 Route::get('/workers/{user}', [WorkerController::class, 'show'])->name('profile');
 
+Route::get('/feedback', [HomeController::class, 'feedback'])->name("feedback");
+
 
 Route::get('paginate', [PaginationController::class, "index"]);

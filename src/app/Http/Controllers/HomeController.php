@@ -20,6 +20,11 @@ class HomeController extends Controller
         return view('home', ['users' => $pagination_users]);
     }
 
+    public function feedback()
+    {
+        return view("feedback.feedback");
+    }
+
     public function paginate($items, $perPage = 15, $page = null, $options = [])
     {
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);

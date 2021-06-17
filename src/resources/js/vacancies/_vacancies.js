@@ -32,7 +32,6 @@ function addComment() {
                             </div>
                             <div class="vacancy-comment-right">
                                 <div class="vacancy-worker-name">${response.name}</div>
-                                <button class="btn flare-effect">${response.contact || "Contact"}</button>
                             </div>
                         </div>
                         <div class="vacancy-comment-text">
