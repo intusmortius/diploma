@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\V1\MessagesController;
 use App\Http\Controllers\Api\V1\SendersController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\FeedbackController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaginationController;
@@ -136,7 +137,8 @@ Route::get('/', [HomeController::class, 'home'])->name("home");
 Route::get('/workers', [WorkerController::class, 'index'])->name("workers");
 Route::get('/workers/{user}', [WorkerController::class, 'show'])->name('profile');
 
-Route::get('/feedback', [HomeController::class, 'feedback'])->name("feedback");
+Route::get('/feedback', [FeedbackController::class, 'show'])->name("feedback");
+Route::post('/feedback', [FeedbackController::class, 'sendToAdmin'])->name("feedback-post");
 
 
 Route::get('paginate', [PaginationController::class, "index"]);

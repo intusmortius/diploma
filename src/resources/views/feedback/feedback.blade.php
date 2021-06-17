@@ -3,7 +3,7 @@
         <div class="container">
             <h2 class="section-header">{{ __("Feedback") }}</h2>
             <div class="section-content">
-                <form class="form-block" method="POST" action="/forgot-password">
+                <form class="form-block" method="POST" action="/feedback">
                     @csrf
                     <div class="form-icon-wrapper">
                         <img src="/img/feedback.svg" alt="key">
@@ -16,13 +16,16 @@
                             name="message" value="{{ old("message") ?? "" }}"></textarea>
                         <label for="message" class="form-label">{{ __("Message") }}</label>
                     </div>
-                    @error('email')
+                    @error('message')
                     <span class="invalid-feedback is-invalid" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
                     @if (session('status'))
                     <div class="alert alert-success">{{ session("status") }}</div>
+                    @endif
+                    @if (session('message'))
+                    <div class="alert alert-success">{{ session("message") }}</div>
                     @endif
                     <div class="form-submit"><button class="btn flare-effect">{{ __("Send") }}</button></div>
                 </form>

@@ -69,5 +69,6 @@
     "Feedback": "Зворотній зв'язок",
     "Please enter the message you would like to be send:": "Введіть повідомлення, яке ви хочете надіслати:",
     "Message" : "Повідомлення",
-    "Send": "Надіслати"
+    "Send": "Надіслати",
+    "We have emailed your password reset link!": "Ми надіслали вам посилання для скидання пароля!"
 }
